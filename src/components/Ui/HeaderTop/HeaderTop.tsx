@@ -14,7 +14,7 @@ export const HeaderTop = () => {
           </div>
           <div className='flex items-center gap-2 text-white font-bold text-[16px] '>
             <GrLocation />
-            Qo’qon erkin iqtisodiy sonasi
+            Qo’qon erkin iqtisodiy sohasi
           </div>
         </div>
       </div>
