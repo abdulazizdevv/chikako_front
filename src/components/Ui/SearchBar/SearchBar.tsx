@@ -32,34 +32,36 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
     <div className='bg-white p-1 flex items-center rounded-[50px] '>
       <div className='flex items-center gap-2'>
         <div className='ms-[20px]'>
-          <div className='flex font-semibold text-[16px] gap-2 items-center'>
-            <Select
-              sx={{
-                width: 200,
-                '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#fff',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#fff',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#fff',
-                },
-              }}
-              variant='outlined'
-              size='small'
-              labelId='demo-select-small-label'
-              id='demo-select-small'
-              value={age === '' ? 'Select Category' : age}
-              onChange={handleChange}
-              IconComponent={CustomSelectIcon}
-            >
-              <MenuItem value='Select Category'>Select Category</MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </div>
+          {isIcon && (
+            <div className='flex font-semibold text-[16px] gap-2 items-center'>
+              <Select
+                sx={{
+                  width: 'auto',
+                  '.MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#fff',
+                  },
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#fff',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#fff',
+                  },
+                }}
+                variant='outlined'
+                size='small'
+                labelId='demo-select-small-label'
+                id='demo-select-small'
+                value={age === '' ? 'Select Category' : age}
+                onChange={handleChange}
+                IconComponent={CustomSelectIcon}
+              >
+                <MenuItem value='Select Category'>Select Category</MenuItem>
+                <MenuItem value={10}>Ten</MenuItem>
+                <MenuItem value={20}>Twenty</MenuItem>
+                <MenuItem value={30}>Thirty</MenuItem>
+              </Select>
+            </div>
+          )}
         </div>
         <Autocomplete
           value={value}
@@ -100,15 +102,12 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
           id='free-solo-with-text-demo'
           options={top100Films}
           getOptionLabel={(option) => {
-            // Value selected with enter, right from the input
             if (typeof option === 'string') {
               return option;
             }
-            // Add "xxx" option created dynamically
             if (option.inputValue) {
               return option.inputValue;
             }
-            // Regular option
             return option.title;
           }}
           renderOption={(props, option) => (

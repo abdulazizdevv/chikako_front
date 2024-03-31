@@ -5,7 +5,7 @@ import Fire from '@/assets/icons/fire.svg';
 
 export const Navbar = () => {
   return (
-    <nav className=' shadow-lg shadow-[#eee]'>
+    <nav className=' shadow-lg shadow-[#eee] '>
       <div className='container px-5 py-[15px] flex items-center justify-between m-auto'>
         <div className='flex items-center gap-[32px] font-[500]'>
           {['Home', 'About', 'Categories', 'Pages', 'Fikrlar', 'Contact'].map(

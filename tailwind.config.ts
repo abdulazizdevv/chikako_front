@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         mainColor: '#F40A17',
         textColor: '#F0344F',
+        textGrey: '#69778A',
+        textGreen: '#00BBAE',
+        textOrange: '#f88e0f',
         bgColor: '#F4F1EA',
       },
     },

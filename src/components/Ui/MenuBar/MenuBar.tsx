@@ -1,10 +1,8 @@
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import { RiMenu2Fill } from 'react-icons/ri';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,7 +20,7 @@ export default function MenuBar() {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
-        setState({ ...state, top: false }); // Eğer ekran genişliği 1024 pikselden büyükse Drawer'ı otomatik kapat
+        setState({ ...state, top: false });
       }
     };
 
@@ -31,7 +29,7 @@ export default function MenuBar() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // Sadece bir kez çalışması için boş dependency array kullandık
+  }, [state]);
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -50,12 +48,13 @@ export default function MenuBar() {
   const list = () => (
     <Box
       sx={{
-        marginTop: '10px', // Üstten 50 piksel aşağı kaydırma
+        marginTop: '10px',
       }}
       role='presentation'
+      className={'container m-auto px-5'}
       // onKeyDown={toggleDrawer('top', false)}
     >
-      <div className='flex items-center justify-between m-5'>
+      <div className='flex items-center justify-between my-5'>
         <Link href='/'>
           <Image
             src={Logo}
@@ -69,7 +68,7 @@ export default function MenuBar() {
           <IoClose size={24} />
         </div>
       </div>
-      <div className='border border-[#b5b3b3] rounded-lg mx-5 '>
+      <div className='border border-[#b5b3b3] rounded-lg '>
         <SearchBar isIcon={false} />
       </div>
       <List>
@@ -93,13 +92,14 @@ export default function MenuBar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('top', true)}>
+      <div onClick={toggleDrawer('top', true)}>
         <RiMenu2Fill size={28} color='white' />
-      </Button>
+      </div>
       <Drawer
         anchor='top'
         open={state['top']}
         onClose={toggleDrawer('top', false)}
+        sx={{}}
       >
         {list()}
       </Drawer>

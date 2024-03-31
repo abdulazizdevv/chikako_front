@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Baloo_2 } from 'next/font/google';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import './globals.css';
 import Layout from '@/components/Layout/Layout';
+import 'keen-slider/keen-slider.min.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Baloo_2({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',

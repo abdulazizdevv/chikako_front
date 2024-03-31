@@ -1,0 +1,31 @@
+    [class^="number-slide"],
+    [class*=" number-slide"] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .navigation-wrapper {
+        position: relative;
+    }
+
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        fill: rgb(228, 87, 87);
+        cursor: pointer;
+    }
+
+    .arrow--left {
+        left: 5px;
+    }
+
+    .arrow--right {
+        right: 8px;
+    }
