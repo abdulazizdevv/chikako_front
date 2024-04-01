@@ -5,8 +5,12 @@ import CardContent from '@mui/joy/CardContent';
 import Toys from '@/assets/images/toys.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSetStore } from '@/store/store';
 
 export default function CardProduct() {
+  const { header } = useSetStore();
+  // console.log(header);
+
   return (
     <Card
       sx={{
@@ -26,7 +30,7 @@ export default function CardProduct() {
             Salfetkalar
           </p>
           <Link
-            href={'/product'}
+            href={`/${header}/product`}
             className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
           >
             Wonder Dolls: Where Imagination Comes to Life!
