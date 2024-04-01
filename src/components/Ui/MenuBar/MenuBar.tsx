@@ -12,6 +12,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import { IoClose } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
 import { useSetStore } from '@/store/store';
+import LocaleSwitcher from '../Local-switcher/Local-switcher';
 
 type Anchor = 'top';
 
@@ -67,6 +68,7 @@ export default function MenuBar() {
             objectFit='contain'
           />
         </Link>
+        <LocaleSwitcher />
         <div onClick={toggleDrawer('top', false)} className='cursor-pointer'>
           <IoClose size={24} />
         </div>
