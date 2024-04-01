@@ -152,10 +152,10 @@ interface FilmOptionType {
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films: readonly FilmOptionType[] = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
+  { title: 'Lorem 12', year: 1994 },
+  { title: 'Test', year: 1972 },
+  { title: 'Result 363', year: 1974 },
+  { title: 'Fight night', year: 2008 },
   { title: '12 Angry Men', year: 1957 },
   { title: "Schindler's List", year: 1993 },
   { title: 'Pulp Fiction', year: 1994 },
