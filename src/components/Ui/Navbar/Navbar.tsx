@@ -10,7 +10,7 @@ export const Navbar = () => {
         <div className='flex items-center gap-[32px] font-[500]'>
           {['Home', 'About', 'Categories', 'Pages', 'Fikrlar', 'Contact'].map(
             (el, idx) => (
-              <Link key={idx} href={`#`} className='hover:text-mainColor '>
+              <Link key={idx} href={`#${el}`} className='hover:text-mainColor '>
                 {el}
               </Link>
             )

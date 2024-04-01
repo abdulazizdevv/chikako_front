@@ -60,7 +60,7 @@ export function Header() {
             </div>
           </div>
         </div>
-        <div className='hidden lg:block '>
+        <div className='hidden lg:block bg-white'>
           <Navbar />
         </div>
       </header>
