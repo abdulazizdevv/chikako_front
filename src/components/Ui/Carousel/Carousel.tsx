@@ -39,7 +39,7 @@ export default function Carousel() {
           if (mouseOver) return;
           timeout = setTimeout(() => {
             slider.next();
-          }, 20000);
+          }, 3000);
         }
         slider.on('created', () => {
           slider.container.addEventListener('mouseover', () => {
