@@ -51,3 +51,9 @@
     left: auto;
     right: 5px;
 }
+
+@media (max-width: 650px) {
+    .arrow {
+        display: none !important;
+    }
+}

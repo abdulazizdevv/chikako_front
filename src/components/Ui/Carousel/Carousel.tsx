@@ -19,6 +19,7 @@ export default function Carousel() {
     {
       loop: true,
       slides: { perView: 1, origin: 'center', spacing: 15 },
+
       slideChanged(slider) {
         setCurrentSlide(slider.track.details.rel);
       },
@@ -65,7 +66,7 @@ export default function Carousel() {
           <div className='keen-slider__slide '>
             <Image
               src={Img}
-              className='w-full'
+              className='w-full h-[250px]'
               width={1386}
               height={610}
               alt='Image 1'

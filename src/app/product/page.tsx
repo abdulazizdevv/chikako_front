@@ -5,8 +5,8 @@ import Img from '@/assets/images/toys.png';
 const SingleProduct = () => {
   return (
     <div className='container px-5 m-auto'>
-      <div className='mt-[25px]'>
-        <div className='flex items-center'>
+      <div className='my-[25px]'>
+        <div className='flex gap-5 items-center flex-wrap lg:flex-nowrap'>
           <Image src={Img} width={600} height={500} alt='img' />
           <div>
             <h2 className='text-[32px] font-semibold'>
