@@ -72,11 +72,12 @@ export default function MenuBar() {
         <SearchBar isIcon={false} />
       </div>
       <List>
-        {['Home', 'About', 'Categories', 'Pages', 'Fikrlar', 'Contact'].map(
+        {['Home', 'Product', 'Categories', 'Pages', 'Fikrlar', 'Contact'].map(
           (text, index) => (
             <ListItem key={text} onKeyDown={toggleDrawer('top', false)}>
               <Link
-                href={`/${text}`}
+                onClick={toggleDrawer('top', false)}
+                href={`#${text}`}
                 className='hover:bg-[#FFEEF0] rounded-md w-full '
               >
                 <ListItemButton className='hover:bg-[#FFEEF0] rounded-md font-bold'>

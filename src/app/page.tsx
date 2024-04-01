@@ -57,7 +57,7 @@ export default function Home() {
       <div className='absolute right-[40px]'>
         <Image src={Umbrella} width={60} height={60} alt='pic' />
       </div>
-      <div className='container px-5 m-auto mt-[100px] '>
+      <div className='container px-5 m-auto mt-[100px] ' id='Product'>
         <div className='flex gap-[31px] font-bold mb-[36px]'>
           <button className='hover:text-mainColor text-textGrey'>
             Hammasi
@@ -79,7 +79,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='mt-[80px] bg-mainColor'>
+      <div className='mt-[80px] bg-mainColor' id='Categories'>
         <div className='container px-5 m-auto py-[85px]'>
           <div className='text-center text-[white] mb-[30px]'>
             <h2 className='text-[36px] font-semibold'>Shop by Categories</h2>
