@@ -66,7 +66,7 @@ export const Footer = () => {
   return (
     <>
       <footer className='bg-[#EEFBFA] relative' id='Contact'>
-        <div className='container px-5 m-auto py-[100px] pb-[200px]'>
+        <div className='container px-3 m-auto py-[100px] pb-[200px]'>
           <div className='flex flex-wrap gap-5 items-start justify-between'>
             <div style={{ zIndex: 99 }}>
               <Image src={Logo} width={192} height={72} alt='logo' />

@@ -17,7 +17,7 @@ export function Header() {
       </div>
       <header style={{ position: 'sticky', top: 0, zIndex: 5 }}>
         <div className='bg-mainColor'>
-          <div className='container px-5 py-[12px] m-auto'>
+          <div className='container px-3 py-[12px] m-auto'>
             <div className=''>
               <div className='hidden lg:flex items-center justify-between'>
                 <Link href='/'>
