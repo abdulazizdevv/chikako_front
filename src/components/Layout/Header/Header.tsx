@@ -8,6 +8,7 @@ import { HeaderTop } from '@/components/Ui/HeaderTop/HeaderTop';
 import MenuBar from '@/components/Ui/MenuBar/MenuBar';
 import { Navbar } from '@/components/Ui/Navbar/Navbar';
 import SearchBar from '@/components/Ui/SearchBar/SearchBar';
+import LocaleSwitcher from '@/components/Ui/Local-switcher/Local-switcher';
 
 export function Header() {
   return (
@@ -32,16 +33,19 @@ export function Header() {
                 <div>
                   <SearchBar isIcon={true} />
                 </div>
-                <Link
-                  href={'tel:+998 90 010 50 85'}
-                  className='flex items-center gap-2 text-[12px] border border-[#FFFFFF59] w-[200px] justify-center py-2 rounded-[50px] text-white'
-                >
-                  <FiPhoneCall size={20} />
-                  <span className='font-sans font-bold'>
-                    24/7 support: <br />
-                    +998 90 010 50 85
-                  </span>
-                </Link>
+                <div className='flex items-center '>
+                  <LocaleSwitcher />
+                  <Link
+                    href={'tel:+998 90 010 50 85'}
+                    className='flex items-center gap-2 text-[12px] border border-[#FFFFFF59] w-[200px] justify-center py-2 rounded-[50px] text-white'
+                  >
+                    <FiPhoneCall size={20} />
+                    <span className='font-sans font-bold'>
+                      24/7 support: <br />
+                      +998 90 010 50 85
+                    </span>
+                  </Link>
+                </div>
               </div>
               <div className='flex items-center justify-between lg:hidden'>
                 <Link href='/'>

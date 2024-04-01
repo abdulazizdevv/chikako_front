@@ -1,3 +1,4 @@
+'use client';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -10,10 +11,12 @@ import Logo from '@/assets/icons/logo.svg';
 import SearchBar from '../SearchBar/SearchBar';
 import { IoClose } from 'react-icons/io5';
 import { useEffect, useState } from 'react';
+import { useSetStore } from '@/store/store';
 
 type Anchor = 'top';
 
 export default function MenuBar() {
+  const { dictionary } = useSetStore();
   const [state, setState] = useState({
     top: false,
   });
@@ -72,21 +75,25 @@ export default function MenuBar() {
         <SearchBar isIcon={false} />
       </div>
       <List>
-        {['Home', 'Product', 'Categories', 'Pages', 'Fikrlar', 'Contact'].map(
-          (text, index) => (
-            <ListItem key={text} onKeyDown={toggleDrawer('top', false)}>
-              <Link
-                onClick={toggleDrawer('top', false)}
-                href={`#${text}`}
-                className='hover:bg-[#FFEEF0] rounded-md w-full '
-              >
-                <ListItemButton className='hover:bg-[#FFEEF0] rounded-md font-bold'>
-                  {text}
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          )
-        )}
+        {[
+          dictionary?.home,
+          dictionary?.about,
+          dictionary?.categories,
+          dictionary?.pages,
+          dictionary?.contact,
+        ].map((text, index) => (
+          <ListItem key={text} onKeyDown={toggleDrawer('top', false)}>
+            <Link
+              onClick={toggleDrawer('top', false)}
+              href={`#${text}`}
+              className='hover:bg-[#FFEEF0] rounded-md w-full '
+            >
+              <ListItemButton className='hover:bg-[#FFEEF0] rounded-md font-bold'>
+                {text}
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
