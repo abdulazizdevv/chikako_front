@@ -24,7 +24,7 @@ export default function LocaleSwitcher() {
               href={redirectedPathName(locale)}
               passHref
               className={`rounded-md border border-textGreen font-bold ${
-                isCurrentLocale ? 'bg-textGreen text-white' : ' text-textOrange'
+                isCurrentLocale ? 'bg-textGreen text-white' : ' text-black'
               } px-3 py-2`}
             >
               {locale}
