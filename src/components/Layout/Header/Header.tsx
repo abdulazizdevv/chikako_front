@@ -15,7 +15,7 @@ export function Header() {
       <div className='hidden lg:block'>
         <HeaderTop />
       </div>
-      <header style={{ position: 'sticky', top: 0, zIndex: 5 }}>
+      <header style={{ position: 'sticky', top: 0, zIndex: 999 }}>
         <div className='bg-mainColor'>
           <div className='container px-3 py-[12px] m-auto'>
             <div className=''>
