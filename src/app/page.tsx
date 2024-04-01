@@ -1,3 +1,4 @@
+'use client';
 import { Card } from '@/components/Ui/Card/Card';
 import Carousel from '@/components/Ui/Carousel/Carousel';
 import Image from 'next/image';
@@ -11,6 +12,8 @@ import CategoryCard from '@/components/Ui/CategoryCard/CategoryCard';
 import { DiscountCarousel } from '@/components/Ui/DiscountCarousel/DiscountCarousel';
 import { Kids } from '@/components/Ui/Kids/Kids';
 import StarCarousel from '@/components/Ui/StarCarousel/StarCarousel';
+import { MdArrowUpward } from 'react-icons/md';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const data = [
@@ -43,9 +46,39 @@ export default function Home() {
       bgColor: '#FFEEF0',
     },
   ];
+  const [showBlock, setShowBlock] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 100) {
+        setShowBlock(true);
+      } else {
+        setShowBlock(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <main>
+      <div
+        className={
+          showBlock
+            ? `flex items-center gap-3  right-3 bottom-8 fixed z-40 cursor-pointer`
+            : 'hidden'
+        }
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <p className='text-textGrey font-semibold text-[14px]'>Back To Top</p>
+        <div className='bg-textOrange w-[36px] h-[36px] flex justify-center items-center rounded-full text-white'>
+          <MdArrowUpward size={23} />
+        </div>
+      </div>
       <div className='container px-5 m-auto'>
         <Carousel />
       </div>
