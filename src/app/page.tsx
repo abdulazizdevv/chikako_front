@@ -82,7 +82,7 @@ export default function Home() {
       <div className='container px-3 m-auto'>
         <Carousel />
       </div>
-      <div className='container px-3 m-auto mt-[50px] flex items-center flex-wrap lg:flex-nowrap justify-between gap-5'>
+      <div className='container px-3 m-auto mt-[50px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
         {data.map((item) => (
           <Card key={item.id} data={item} />
         ))}

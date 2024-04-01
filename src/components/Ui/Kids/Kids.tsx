@@ -9,7 +9,7 @@ import gameRoom from '@/assets/icons/gameRoom.svg';
 
 export const Kids = () => {
   return (
-    <div className='flex items-center  md:justify-between justify-center gap-[50px] flex-wrap'>
+    <div className='flex items-center  md:justify-between justify-center gap-[50px] md:flex-wrap'>
       <div className='filter grayscale hover:grayscale-0 cursor-pointer '>
         <Image src={kidsParty} width={170} height={70} alt='pic' />
       </div>
