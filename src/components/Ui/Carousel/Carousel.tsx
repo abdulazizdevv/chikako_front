@@ -66,7 +66,7 @@ export default function Carousel() {
           <div className='keen-slider__slide '>
             <Image
               src={Img}
-              className='w-full h-[250px]'
+              className='w-full h-[250px] md:h-auto'
               width={1386}
               height={610}
               alt='Image 1'

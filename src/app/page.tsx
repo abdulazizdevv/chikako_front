@@ -90,7 +90,7 @@ export default function Home() {
       <div className='absolute right-[40px]'>
         <Image src={Umbrella} width={60} height={60} alt='pic' />
       </div>
-      <div className='container px-5 m-auto mt-[100px] ' id='Product'>
+      <section className='container px-5 m-auto mt-[100px] ' id='Product'>
         <div className='flex gap-[31px] font-bold mb-[36px]'>
           <button className='hover:text-mainColor text-textGrey'>
             Hammasi
@@ -110,9 +110,9 @@ export default function Home() {
           <CardProduct />
           <CardProduct />
         </div>
-      </div>
+      </section>
 
-      <div className='mt-[80px] bg-mainColor' id='Categories'>
+      <section className='mt-[80px] bg-mainColor' id='Categories'>
         <div className='container px-5 m-auto py-[85px]'>
           <div className='text-center text-[white] mb-[30px]'>
             <h2 className='text-[36px] font-semibold'>Shop by Categories</h2>
@@ -123,8 +123,9 @@ export default function Home() {
           </div>
           <CategoryCard />
         </div>
-      </div>
-      <div>
+      </section>
+
+      <section>
         <div className='container px-5 m-auto py-[85px]'>
           <div className='text-center text-[#001430] mb-[30px]'>
             <h2 className='text-[36px] font-semibold'>Shop by Age</h2>
@@ -135,13 +136,13 @@ export default function Home() {
           </div>
           <StarCarousel />
         </div>
-      </div>
+      </section>
       <div className='bg-mainColor py-[12px] mt-[15px]'>
         <DiscountCarousel />
       </div>
-      <div className='container px-5 m-auto my-[60px]'>
+      <section className='container px-5 m-auto my-[60px]'>
         <Kids />
-      </div>
+      </section>
     </main>
   );
 }
