@@ -2,7 +2,7 @@
 import { Card } from '@/components/Ui/Card/Card';
 import Carousel from '@/components/Ui/Carousel/Carousel';
 import Image from 'next/image';
-import Comfortable from '@/assets/icons/qulay.svg';
+import Comfortable from '@/assets/icons/qulay2.svg';
 import Economic from '@/assets/icons/economic.svg';
 import Truck from '@/assets/icons/truc.svg';
 import Soft from '@/assets/icons/soft.svg';
