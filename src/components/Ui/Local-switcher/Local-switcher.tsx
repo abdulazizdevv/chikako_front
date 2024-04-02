@@ -1,10 +1,10 @@
 'use client';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { i18n } from '../../../../i18n.config';
 
 export default function LocaleSwitcher() {
   const pathName = usePathname();
+  const router = useRouter();
 
   const redirectedPathName = (locale: string) => {
     if (!pathName) return '/';
@@ -13,25 +13,23 @@ export default function LocaleSwitcher() {
     return segments.join('/');
   };
 
-  return (
-    <ul className='flex gap-x-3'>
-      {i18n.locales.map((locale: any) => {
-        const isCurrentLocale = pathName.includes(locale);
+  const handleChangeLocale = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const locale = e.target.value;
+    const updatedPath = redirectedPathName(locale);
+    return router.push(updatedPath);
+  };
 
-        return (
-          <li key={locale}>
-            <Link
-              href={redirectedPathName(locale)}
-              passHref
-              className={`rounded-md border border-textGreen font-bold ${
-                isCurrentLocale ? 'bg-textGreen text-white' : ' text-black'
-              } px-3 py-2`}
-            >
-              {locale}
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+  return (
+    <select
+      value={pathName.split('/')[1] || ''}
+      onChange={handleChangeLocale}
+      className='rounded-md border border-mainColor font-bold bg-bgColor text-black px-3 py-2'
+    >
+      {i18n.locales.map((locale: any) => (
+        <option key={locale} value={locale}>
+          {locale}
+        </option>
+      ))}
+    </select>
   );
 }

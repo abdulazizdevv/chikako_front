@@ -21,7 +21,7 @@ export const Navbar = () => {
             <Link
               key={idx}
               href={`#${el}`}
-              className='hover:text-mainColor font-[500] text-[18px]'
+              className='hover:text-mainColor font-[500] '
             >
               {el}
             </Link>

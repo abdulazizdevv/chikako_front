@@ -1,8 +1,29 @@
+'use client';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Img from '@/assets/images/toys.png';
+import { Locale } from '../../../../i18n.config';
+import { getDictionary } from '@/lib/Dictionary';
+import { useSetStore } from '@/store/store';
 
-const SingleProduct = () => {
+export default function SingeProduct({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const { updateDictionary, updateHeader } = useSetStore();
+
+  useEffect(() => {
+    const fetchDataAndDictionary = async () => {
+      const dictionary = await getDictionary(lang);
+
+      updateDictionary(dictionary.header);
+      updateHeader(lang);
+    };
+
+    fetchDataAndDictionary();
+  }, [lang, updateDictionary, updateHeader]);
+
   return (
     <div className='container px-3 m-auto'>
       <div className='my-[25px]'>
@@ -30,6 +51,4 @@ const SingleProduct = () => {
       </div>
     </div>
   );
-};
-
-export default SingleProduct;
+}
