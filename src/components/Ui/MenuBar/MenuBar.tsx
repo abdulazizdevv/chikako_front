@@ -68,9 +68,11 @@ export default function MenuBar() {
             objectFit='contain'
           />
         </Link>
-        <LocaleSwitcher />
-        <div onClick={toggleDrawer('top', false)} className='cursor-pointer'>
-          <IoClose size={24} />
+        <div className='flex items-center gap-2'>
+          <LocaleSwitcher />
+          <div onClick={toggleDrawer('top', false)} className='cursor-pointer'>
+            <IoClose size={24} />
+          </div>
         </div>
       </div>
       <div className='border border-[#b5b3b3] rounded-lg '>

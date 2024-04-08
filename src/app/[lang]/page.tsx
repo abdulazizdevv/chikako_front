@@ -56,6 +56,7 @@ export default function Home({
   params: { lang: Locale };
 }) {
   const [showBlock, setShowBlock] = useState(false);
+  const [data, setData] = useState([]);
   const { updateDictionary, updateHeader } = useSetStore();
   const [loading, setLoading] = useState(true);
 

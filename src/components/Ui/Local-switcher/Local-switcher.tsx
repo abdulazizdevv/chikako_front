@@ -23,7 +23,7 @@ export default function LocaleSwitcher() {
     <select
       value={pathName.split('/')[1] || ''}
       onChange={handleChangeLocale}
-      className='rounded-md border border-mainColor font-bold bg-bgColor text-black px-3 py-2'
+      className='rounded-md border border-mainColor font-bold bg-bgColor text-black p-1'
     >
       {i18n.locales.map((locale: any) => (
         <option key={locale} value={locale}>

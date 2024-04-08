@@ -17,6 +17,7 @@
     "@mui/joy": "^5.0.0-beta.32",
     "@mui/material-nextjs": "^5.15.11",
     "@splidejs/react-splide": "^0.7.12",
+    "axios": "^1.6.8",
     "keen-slider": "^6.8.6",
     "negotiator": "^0.6.3",
     "next": "14.1.4",
