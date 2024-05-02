@@ -49,15 +49,17 @@ export default function CardProduct({
       </AspectRatio>
       <CardContent orientation='horizontal'>
         <div>
-          <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
-            {categoryName}
-          </p>
-          <Link
-            href={`${header}/product/${id}`}
-            className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
-          >
-            {title}
-          </Link>
+          <div className='h-[105px]'>
+            <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
+              {categoryName}
+            </p>
+            <Link
+              href={`${header}/product/${id}`}
+              className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
+            >
+              {title.length > 50 ? title?.substring(0, 57) + '...' : title}
+            </Link>
+          </div>
           <div className='mt-[13px]'>
             ⭐⭐⭐⭐⭐
             <span className='font-bold text-textGrey text-[14px]'>(5.00)</span>
