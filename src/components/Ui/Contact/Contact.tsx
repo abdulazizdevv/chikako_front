@@ -34,11 +34,7 @@ const Contact = () => {
   return (
     <>
       <div className='grid lg:grid-cols-3 grid-cols-1 w-full gap-5'>
-        <Card
-          className={
-            'border-none bg-[#fff] flex justify-center items-center p-[15px] w-full md:p-[50px]'
-          }
-        >
+        <Card className={'border-none bg-[#fff]  p-[15px] w-full md:p-[50px]'}>
           <h2 className='text-[32px] font-semibold'>Contact us</h2>
           <p className='text-textGrey'>
             Lorem ipsum dolor sit amet consectetur. Fermentum facilisi id at
@@ -94,7 +90,7 @@ const Contact = () => {
         </Card>
         <Card
           className={
-            'border-none w-full col-span-2 bg-[#fff]  p-[10px] md:p-[50px]'
+            'border-none w-full md:col-span-2 bg-[#fff]  p-[10px] md:p-[50px]'
           }
         >
           <h2 className='text-[32px] font-semibold'>Send message</h2>
