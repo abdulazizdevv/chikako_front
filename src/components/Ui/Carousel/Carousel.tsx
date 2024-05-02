@@ -82,7 +82,7 @@ export default function Carousel() {
               {el && el.image && header && (
                 <Image
                   src={`${baseURLImg}/${el.image[header]}`}
-                  className='w-full h-[600px] object-fill'
+                  className='w-full lg:h-[600px] object-contain lg:object-fill'
                   width={1386}
                   height={600}
                   alt='banner'
