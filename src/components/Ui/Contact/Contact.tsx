@@ -33,7 +33,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className='grid lg:grid-cols-3 justify-center items-center grid-cols-1  w-full gap-5'>
+      <div className='grid lg:grid-cols-3 grid-cols-1 w-full gap-5'>
         <Card
           className={
             'border-none bg-[#fff] flex justify-center items-center p-[15px] w-full md:p-[50px]'
