@@ -12,6 +12,10 @@ import { RiMenu2Fill } from 'react-icons/ri';
 import { getAllProduct } from '@/service/product';
 import { IProduct } from '@/types/langType';
 import { IProductBack } from '@/types/data';
+import Link from 'next/link';
+import { useSetStore } from '@/store/store';
+import { useRouter } from 'next/navigation';
+
 interface SearchBarProps {
   isIcon: boolean;
 }
@@ -28,11 +32,14 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
   const [age, setAge] = useState('Select Category');
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
+  const { header } = useSetStore();
+  const router = useRouter();
 
   React.useEffect(() => {
     const fetcher = async () => {
-      const res = await getAllProduct();
-      setData(res.data?.data);
+      // const res = await getAllProduct();
+      // const res = await getcat();
+      // setData(res.data?.data);
     };
     fetcher();
   }, []);
@@ -42,8 +49,13 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
   };
   // console.log(data);
   const top100Films: any = data?.map((el: IProductBack) => {
-    return { title: el?.name?.en };
+    return { title: el?.name?.en, id: el?._id };
   });
+
+  const handleOptionClick = (option: FilmOptionType) => {
+    router.push(`/product`);
+    console.log(555);
+  };
 
   return (
     <div className='bg-white p-1 flex items-center rounded-[50px] '>
@@ -83,14 +95,11 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
         <Autocomplete
           value={value}
           onChange={(event, newValue) => {
-            // Remove the setValue function call from here
-            // and just update the local state
             if (typeof newValue === 'string') {
               setValue({
                 title: newValue,
               });
             } else if (newValue && newValue.inputValue) {
-              // Create a new value from the user input
               setValue({
                 title: newValue.inputValue,
               });
@@ -127,8 +136,13 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
             }
             return option.title;
           }}
-          renderOption={(props, option) => (
-            <li className='w-full' {...props}>
+          renderOption={(props, option: FilmOptionType) => (
+            <li
+              key={option?.id}
+              onClick={() => handleOptionClick(option)}
+              className='w-full'
+              {...props}
+            >
               {option.title}
             </li>
           )}
@@ -164,7 +178,5 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
 interface FilmOptionType {
   inputValue?: string;
   title: string;
-  year?: number;
+  id?: number;
 }
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top

@@ -33,13 +33,11 @@ const Contact = () => {
 
   return (
     <>
-      <div className='grid lg:grid-cols-3 grid-cols-1  w-full gap-5'>
+      <div className='grid lg:grid-cols-3 justify-center items-center grid-cols-1  w-full gap-5'>
         <Card
-          sx={{
-            backgroundColor: '#fff',
-            border: 'none',
-            padding: '50px',
-          }}
+          className={
+            'border-none bg-[#fff] flex justify-center items-center p-[15px] w-full md:p-[50px]'
+          }
         >
           <h2 className='text-[32px] font-semibold'>Contact us</h2>
           <p className='text-textGrey'>
@@ -95,13 +93,9 @@ const Contact = () => {
           </div>
         </Card>
         <Card
-          className='col-span-2'
-          sx={{
-            width: '100%',
-            backgroundColor: '#fff',
-            border: 'none',
-            padding: '50px',
-          }}
+          className={
+            'border-none w-full col-span-2 bg-[#fff]  p-[10px] md:p-[50px]'
+          }
         >
           <h2 className='text-[32px] font-semibold'>Send message</h2>
           <p className='text-textGrey'>

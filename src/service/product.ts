@@ -4,8 +4,8 @@ export const postProduct = async (data: any) => {
   return await axiosInstance.post('/products', data);
 };
 
-export const getAllProduct = async () => {
-  return await axiosInstance.get('/products');
+export const getAllProduct = async ({ params }: any) => {
+  return await axiosInstance.get('/products', { params });
 };
 
 export const putProduct = async (id: any, data: any) => {

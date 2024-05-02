@@ -20,9 +20,10 @@ import { Locale } from '../../../i18n.config';
 import Loading from '@/components/Ui/Loading/Loading';
 import { getAllProduct, getCategoryProduct } from '@/service/product';
 import { useRouter } from 'next/navigation';
-import { IProductBack } from '@/types/data';
+import { CategoryId, IProductBack } from '@/types/data';
 import Review from '@/components/Ui/Review/Review';
 import Contact from '@/components/Ui/Contact/Contact';
+import { getAllCategory } from '@/service/category';
 
 const data = [
   {
@@ -62,8 +63,10 @@ export default function Home({
 }) {
   const [showBlock, setShowBlock] = useState(false);
   const [productData, setProductData] = useState([]);
+  const [categories, setCategories] = useState([]);
   const { updateDictionary, updateHeader } = useSetStore();
   const [loading, setLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState<string>('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,11 +81,19 @@ export default function Home({
 
   useEffect(() => {
     const fetchDataProduct = async () => {
-      const res = await getAllProduct();
+      const res = await getAllProduct({ params: { categoryId } });
       setProductData(res.data?.data);
     };
 
     fetchDataProduct();
+  }, [categoryId]);
+  useEffect(() => {
+    const fetchDataCategory = async () => {
+      const res = await getAllCategory();
+      setCategories(res.data?.data);
+    };
+
+    fetchDataCategory();
   }, []);
 
   useEffect(() => {
@@ -100,19 +111,7 @@ export default function Home({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const handleFilter = async (id: string) => {
-    try {
-      const productsByCategory = await getCategoryProduct(id);
-      console.log(productsByCategory);
 
-      if (productsByCategory.status === 200) {
-        setProductData(productsByCategory.data);
-        // setActiveCategory(id);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <>
       {loading ? (
@@ -144,16 +143,19 @@ export default function Home({
           </div>
           <section className='container px-3 m-auto mt-[100px] ' id='Product'>
             <div className='flex gap-[31px] font-bold mb-[36px]'>
-              <button className='hover:text-mainColor text-textGrey'>
+              <button
+                onClick={() => setCategoryId('')}
+                className='hover:text-mainColor text-textGrey'
+              >
                 Hammasi
               </button>
-              {productData?.map((el: IProductBack) => (
+              {categories?.map((el: CategoryId) => (
                 <button
                   key={el._id}
-                  onClick={() => handleFilter(el?.categoryId?._id)}
+                  onClick={() => setCategoryId(el?._id)}
                   className='hover:text-mainColor text-textGrey'
                 >
-                  {el?.categoryId?.name[lang]}
+                  {el?.name[lang]}
                 </button>
               ))}
             </div>
