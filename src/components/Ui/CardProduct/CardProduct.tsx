@@ -49,7 +49,7 @@ export default function CardProduct({
       </AspectRatio>
       <CardContent orientation='horizontal'>
         <div>
-          <div className='h-[105px]'>
+          <div className='h-[127px]'>
             <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
               {categoryName}
             </p>
