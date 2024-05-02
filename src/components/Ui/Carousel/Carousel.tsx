@@ -1,6 +1,6 @@
 // // Style
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './carousel.css';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
@@ -11,10 +11,16 @@ import 'keen-slider/keen-slider.min.css';
 import Img from '@/assets/images/slider_img_1.png';
 import Image from 'next/image';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { getAllBanner } from '@/service/banner';
+import { baseURLImg } from '@/service';
+import { useSetStore } from '@/store/store';
 
 export default function Carousel() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [data, setData] = useState<any[]>([]);
+  const { header } = useSetStore();
+
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
       loop: true,
@@ -38,7 +44,7 @@ export default function Carousel() {
           clearTimeout(timeout);
           if (mouseOver) return;
           timeout = setTimeout(() => {
-            slider.next();
+            slider?.next();
           }, 3000);
         }
         slider.on('created', () => {
@@ -59,37 +65,31 @@ export default function Carousel() {
     ]
   );
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getAllBanner();
+      setData(res.data.banners);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className='navigation-wrapper mt-[30px]'>
         <div ref={sliderRef} className='keen-slider'>
-          <div className='keen-slider__slide '>
-            <Image
-              src={Img}
-              className='w-full '
-              width={1386}
-              height={610}
-              alt='Image 1'
-            />
-          </div>
-          <div className='keen-slider__slide '>
-            <Image
-              src={Img}
-              className='w-full'
-              width={1386}
-              height={610}
-              alt='Image 1'
-            />
-          </div>
-          <div className='keen-slider__slide '>
-            <Image
-              src={Img}
-              className='w-full'
-              width={1386}
-              height={610}
-              alt='Image 1'
-            />
-          </div>
+          {data?.map((el: any) => (
+            <div key={el?._id} className='keen-slider__slide '>
+              {el && el.image && header && (
+                <Image
+                  src={`${baseURLImg}/${el.image[header]}`}
+                  className='w-full h-[600px] object-fill'
+                  width={1386}
+                  height={600}
+                  alt='banner'
+                />
+              )}
+            </div>
+          ))}
         </div>
         {loaded && instanceRef.current && (
           <>
@@ -107,7 +107,7 @@ export default function Carousel() {
               }
               disabled={
                 currentSlide ===
-                instanceRef.current.track.details.slides.length - 1
+                instanceRef?.current?.track?.details?.slides?.length - 1
               }
             />
           </>

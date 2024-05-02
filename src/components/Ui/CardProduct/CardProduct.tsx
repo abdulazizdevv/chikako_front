@@ -6,9 +6,26 @@ import Toys from '@/assets/images/toys.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSetStore } from '@/store/store';
+import { baseURLImg } from '@/service';
+import { useRouter } from 'next/navigation';
 
-export default function CardProduct() {
+interface Props {
+  categoryName: string;
+  title: string;
+  img: string;
+  id: string;
+  price: number;
+}
+
+export default function CardProduct({
+  categoryName,
+  title,
+  price,
+  img,
+  id,
+}: Props) {
   const { header } = useSetStore();
+  const navigate = useRouter();
   // console.log(header);
 
   return (
@@ -22,28 +39,40 @@ export default function CardProduct() {
       }}
     >
       <AspectRatio minHeight='120px' maxHeight='200px'>
-        <Image src={Toys} width={282} height={217} alt='pic' />
+        <Image
+          src={`${baseURLImg}/${img}`}
+          width={282}
+          height={217}
+          alt='pic'
+          className='object-contain'
+        />
       </AspectRatio>
       <CardContent orientation='horizontal'>
         <div>
           <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
-            Salfetkalar
+            {categoryName}
           </p>
           <Link
-            href={`/${header}/product`}
+            href={`${header}/product/${id}`}
             className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
           >
-            Wonder Dolls: Where Imagination Comes to Life!
+            {title}
           </Link>
           <div className='mt-[13px]'>
             ⭐⭐⭐⭐⭐
             <span className='font-bold text-textGrey text-[14px]'>(5.00)</span>
           </div>
           <p className='font-bold text-[24px] text-mainColor mt-[11px]'>
-            80 000 so’m
+            {price} so’m
           </p>
         </div>
       </CardContent>
+      <button
+        onClick={() => navigate.push(`${header}/product/${id}`)}
+        className='w-full rounded-md p-[5px] text-center font-semibold text-mainColor hover:bg-mainColor border border-[red] hover:text-white'
+      >
+        Sotib olish
+      </button>
     </Card>
   );
 }

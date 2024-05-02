@@ -1,17 +1,23 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styleCard.css';
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import Castell from '@/assets/images/castel.png';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { getAllCategory } from '@/service/category';
+import { CategoryId } from '@/types/data';
+import { useSetStore } from '@/store/store';
+import { headers } from 'next/headers';
+import { baseURLImg } from '@/service';
+import { Locale } from '../../../../i18n.config';
 
-const SliderCard = ({ image, title }: { image: any; title: string }) => {
+const SliderCard = ({ image, title }: { image: any; title: any }) => {
   return (
     <div className='bg-white rounded-[20px] w-full flex flex-col cursor-pointer justify-center items-center p-[21px]'>
       <div className='rounded-full bg-[#EDFBFA] p-[25px] '>
         <Image
-          src={image}
+          src={`${baseURLImg}/${image}`}
           width={70}
           height={70}
           alt='pic'
@@ -25,9 +31,10 @@ const SliderCard = ({ image, title }: { image: any; title: string }) => {
 
 export default function CategoryCard() {
   const [loaded, setLoaded] = useState(false);
+  const [data, setData] = useState<CategoryId[]>();
+  const { header } = useSetStore();
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
-    // rtl: false,
     breakpoints: {
       '(max-width: 300px)': {
         slides: { perView: 1, spacing: 20 },
@@ -39,53 +46,44 @@ export default function CategoryCard() {
         slides: { perView: 2, spacing: 20 },
       },
       '(min-width: 750px)': {
-        slides: { perView: 2, spacing: 25 },
+        slides: { perView: 2, spacing: 25, origin: 'auto' },
       },
       '(min-width: 980px)': {
-        slides: { perView: 3, spacing: 25 },
+        slides: { perView: 3, spacing: 25, origin: 'auto' },
       },
       '(min-width: 1220px)': {
-        slides: { perView: 5, spacing: 25 },
+        slides: { perView: 5, spacing: 25, origin: 'auto' },
       },
       '(min-width: 1400px)': {
-        slides: { perView: 6, spacing: 25 },
+        slides: { perView: 6, spacing: 25, origin: 'auto' },
       },
     },
-    slides: { perView: 1, origin: 'center' },
+    slides: { perView: 1, origin: 'auto', spacing: 25 },
 
-    // slideChanged(slider) {
-    //   setCurrentSlide(slider.track.details.rel);
-    // },
     created() {
       setLoaded(true);
     },
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getAllCategory();
+      setData(res?.data?.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className='navigation-wrapper'>
         <div ref={sliderRef} className='keen-slider'>
-          <div className='keen-slider__slide '>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={Castell} title='Games and puzzle 1' />
-          </div>
+          {data?.map((el: any) => (
+            <div className='keen-slider__slide ' key={el._id}>
+              {header && (
+                <SliderCard image={el.image} title={el?.name[header]} />
+              )}
+            </div>
+          ))}
         </div>
         {loaded && instanceRef.current && (
           <>

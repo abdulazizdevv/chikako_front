@@ -5,6 +5,11 @@ import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import Star1 from '@/assets/images/star1.png';
+import StarPink from '@/assets/images/starPink.png';
+import StarGreen from '@/assets/images/starGreen.png';
+import StarRed from '@/assets/images/starRed.png';
+import StarBlue from '@/assets/images/starBlue.png';
+import StarYellow from '@/assets/images/starYellow.png';
 
 export default function StarCarousel() {
   const [sliderRef] = useKeenSlider<HTMLDivElement>(
@@ -74,19 +79,19 @@ export default function StarCarousel() {
           <Image src={Star1} width={211} height={150} alt='pic' />
         </div>
         <div className='keen-slider__slide'>
-          <Image src={Star1} width={211} height={150} alt='pic' />
+          <Image src={StarPink} width={211} height={150} alt='pic' />
         </div>
         <div className='keen-slider__slide'>
-          <Image src={Star1} width={211} height={150} alt='pic' />
+          <Image src={StarGreen} width={211} height={150} alt='pic' />
         </div>
         <div className='keen-slider__slide'>
-          <Image src={Star1} width={211} height={150} alt='pic' />
+          <Image src={StarRed} width={211} height={150} alt='pic' />
         </div>
         <div className='keen-slider__slide'>
-          <Image src={Star1} width={211} height={150} alt='pic' />
+          <Image src={StarBlue} width={211} height={150} alt='pic' />
         </div>
         <div className='keen-slider__slide'>
-          <Image src={Star1} width={211} height={150} alt='pic' />
+          <Image src={StarYellow} width={211} height={150} alt='pic' />
         </div>
       </div>
     </>
