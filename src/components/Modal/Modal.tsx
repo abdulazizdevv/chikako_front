@@ -5,6 +5,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField, Select, MenuItem } from '@mui/material';
 import { useFormik } from 'formik';
+import TextArea from '../Ui/TextArea/TextArea';
+import { postOrder } from '@/service/contact';
+import { ToastContainer, toast } from 'react-toastify';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -19,27 +22,63 @@ const style = {
   p: 3,
 };
 interface IProps {
+  data: object;
   open: boolean;
   setOpen: (value: boolean) => void;
 }
 interface IinitalValues {
-  name: string;
-  phoneNumber: string;
-  address: string;
-  paymentType: string;
+  fullname: string;
+  phone: string;
+  comment: string;
+  product: any[];
 }
 
-export default function ModalOrder({ open, setOpen }: IProps) {
+export default function ModalOrder({ data, open, setOpen }: IProps) {
   const handleClose = () => setOpen(false);
   const initialValues = {
-    name: '',
-    phoneNumber: '',
-    address: '',
-    paymentType: 'Naqd',
+    fullname: '',
+    phone: '',
+    comment: '',
+    product: [],
   };
 
   const onSubmit = (values: IinitalValues) => {
-    // console.log(values);
+    const res = {
+      ...values,
+      product: [data],
+    };
+    postOrder(res)
+      .then(() => {
+        handleClose();
+        formik.setValues({
+          fullname: '',
+          phone: '',
+          comment: '',
+          product: [],
+        });
+        toast.success('Success', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        toast.error('Error', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
   const formik = useFormik({
     initialValues,
@@ -48,6 +87,7 @@ export default function ModalOrder({ open, setOpen }: IProps) {
 
   return (
     <div>
+      <ToastContainer position='top-center' />
       <Modal
         open={open}
         onClose={handleClose}
@@ -68,8 +108,10 @@ export default function ModalOrder({ open, setOpen }: IProps) {
                 size='small'
                 fullWidth
                 type='text'
-                value={formik.values.name}
-                onChange={(e) => formik.setFieldValue('name', e.target.value)}
+                value={formik.values.fullname}
+                onChange={(e) =>
+                  formik.setFieldValue('fullname', e.target.value)
+                }
               />
               <TextField
                 id='outlined-basic'
@@ -78,37 +120,17 @@ export default function ModalOrder({ open, setOpen }: IProps) {
                 size='small'
                 type='tel'
                 fullWidth
-                value={formik.values.phoneNumber}
-                onChange={(e) =>
-                  formik.setFieldValue('phoneNumber', e.target.value)
+                value={formik.values.phone}
+                onChange={(e) => formik.setFieldValue('phone', e.target.value)}
+              />
+              <TextArea
+                value={formik.values.comment}
+                placeholder={'Write your comment here..'}
+                size={10}
+                onChange={(e: any) =>
+                  formik.setFieldValue('comment', e.target.value)
                 }
               />
-              <TextField
-                id='outlined-basic'
-                label='Address'
-                variant='outlined'
-                type='text'
-                size='small'
-                fullWidth
-                value={formik.values.address}
-                onChange={(e) =>
-                  formik.setFieldValue('address', e.target.value)
-                }
-              />
-              <Select
-                className='w-full'
-                variant='outlined'
-                size='small'
-                labelId='demo-select-small-label'
-                id='demo-select-small'
-                value={formik.values.paymentType}
-                onChange={(e) =>
-                  formik.setFieldValue('paymentType', e.target.value)
-                }
-              >
-                <MenuItem value={'Naqd'}>Naqd</MenuItem>
-                <MenuItem value={'Kart'}>Kart</MenuItem>
-              </Select>
             </div>
             <Button
               className='float-end mt-5'

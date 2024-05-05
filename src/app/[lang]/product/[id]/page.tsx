@@ -87,7 +87,7 @@ export default function Product({
               Buyurtma berish
             </button>
           </div>
-          <ModalOrder open={open} setOpen={setOpen} />
+          <ModalOrder data={data} open={open} setOpen={setOpen} />
         </div>
       )}
     </>
