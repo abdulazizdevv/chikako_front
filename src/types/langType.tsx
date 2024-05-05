@@ -4,6 +4,8 @@ export type Translations = {
   categories: string;
   contact: string;
   pages: string;
+  contact_us: string;
+  send_contact: string;
 };
 
 export interface IProduct {

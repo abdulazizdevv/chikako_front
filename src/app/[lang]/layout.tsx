@@ -5,6 +5,7 @@ import { i18n } from '../../../i18n.config';
 import './globals.css';
 import Layout from '@/components/Layout/Layout';
 import 'keen-slider/keen-slider.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Baloo_2({ subsets: ['latin'] });
 

@@ -10,32 +10,67 @@ import { useFormik } from 'formik';
 import { GoMail } from 'react-icons/go';
 import { IoLocationOutline } from 'react-icons/io5';
 import TextArea from '../TextArea/TextArea';
+import { postOrder } from '@/service/contact';
+import Alert from '@mui/material/Alert';
+import { ToastContainer, toast } from 'react-toastify';
+import { useSetStore } from '@/store/store';
 interface IValue {
-  name: string;
-  phone_number: string;
-  email: string;
-  subject: string;
+  fullname: string;
+  phone: string;
+  comment: string;
 }
 const Contact = () => {
+  const { dictionary } = useSetStore();
+
   const initialValues = {
-    name: '',
-    phone_number: '',
-    email: '',
-    subject: '',
+    fullname: '',
+    phone: '',
+    comment: '',
   };
-  const onSubmit = (values: IValue) => {};
+  const onSubmit = (values: IValue) => {
+    postOrder(values)
+      .then((res) => {
+        console.log(res);
+        formik.setValues({
+          fullname: '',
+          phone: '',
+          comment: '',
+        });
+        toast.success('Success', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      })
+      .catch(() => {
+        toast.error('Error', {
+          position: 'top-center',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
   const formik = useFormik({
     initialValues,
     onSubmit,
   });
 
-  const { handleSubmit } = formik;
+  const { handleSubmit, values, setFieldValue } = formik;
 
   return (
     <>
+      <ToastContainer position='top-center' />
       <div className='grid lg:grid-cols-3 grid-cols-1 w-full gap-5'>
         <Card className={'border-none bg-[#fff]  p-[15px] w-full md:p-[50px]'}>
-          <h2 className='text-[32px] font-semibold'>Contact us</h2>
+          <h2 className='text-[32px] font-semibold'>{dictionary.contact_us}</h2>
           <p className='text-textGrey'>
             Lorem ipsum dolor sit amet consectetur. Fermentum facilisi id at
             adipiscing ametb ibendum quis vitae blandit.
@@ -93,10 +128,14 @@ const Contact = () => {
             'border-none w-full md:col-span-2 bg-[#fff]  p-[10px] md:p-[50px]'
           }
         >
-          <h2 className='text-[32px] font-semibold'>Send message</h2>
+          <h2 className='text-[32px] font-semibold'>
+            {dictionary.send_contact}
+          </h2>
           <p className='text-textGrey'>
             Lorem ipsum dolor sit amet consectetur. Fermentum facilisi id at
-            adipiscing ametb ibendum quis vitae <br /> blandit.
+            adipiscing ametb ibendum quis vitae adipiscing ametb ibendum quis
+            vitae blandit. adipiscing ametb ibendum quis vitae adipiscing ametb
+            ibendum quis vitae blandit. ibendum quis vitae blandit.
           </p>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-2 gap-4 mb-4'>
@@ -107,6 +146,8 @@ const Contact = () => {
                 type='text'
                 size='medium'
                 color='error'
+                value={values.fullname}
+                onChange={(e) => setFieldValue('fullname', e.target.value)}
               />
               <TextField
                 id='outlined-basic'
@@ -115,25 +156,16 @@ const Contact = () => {
                 type='tel'
                 color='error'
                 size='medium'
-              />
-              <TextField
-                id='outlined-basic'
-                label='Email Address'
-                variant='outlined'
-                type='email'
-                color='error'
-                size='medium'
-              />
-              <TextField
-                id='outlined-basic'
-                label='Subject'
-                variant='outlined'
-                type='text'
-                color='error'
-                size='medium'
+                value={values.phone}
+                onChange={(e) => setFieldValue('phone', e.target.value)}
               />
             </div>
-            <TextArea placeholder={'Write your comment here..'} size={10} />
+            <TextArea
+              value={values.comment}
+              placeholder={'Write your comment here..'}
+              size={10}
+              onChange={(e: any) => setFieldValue('comment', e.target.value)}
+            />
             <Button
               // onClick={handleClick}
               variant='contained'
