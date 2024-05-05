@@ -1,6 +1,11 @@
-'use client';
 import { usePathname, useRouter } from 'next/navigation';
 import { i18n } from '../../../../i18n.config';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Image from 'next/image';
+import UzFlag from '@/assets/images/uzflag.png';
+import RuFlag from '@/assets/images/ruFlag.png';
+import EnFlag from '@/assets/images/enFlag.png';
 
 export default function LocaleSwitcher() {
   const pathName = usePathname();
@@ -13,23 +18,70 @@ export default function LocaleSwitcher() {
     return segments.join('/');
   };
 
-  const handleChangeLocale = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChangeLocale = (e: SelectChangeEvent) => {
     const locale = e.target.value;
     const updatedPath = redirectedPathName(locale);
-    return router.push(updatedPath);
+    router.push(updatedPath);
   };
 
   return (
-    <select
+    <Select
       value={pathName.split('/')[1] || ''}
       onChange={handleChangeLocale}
-      className='rounded-md border border-mainColor font-bold bg-bgColor text-black p-1'
+      displayEmpty
+      inputProps={{ 'aria-label': 'Without label' }}
+      autoWidth
+      variant='outlined'
+      size='small'
+      className='bg-white rounded-md'
     >
       {i18n.locales.map((locale: any) => (
-        <option key={locale} value={locale}>
-          {locale}
-        </option>
+        <MenuItem
+          key={locale}
+          value={locale}
+          className='flex items-center gap-3'
+        >
+          <div className='flex items-center'>
+            <Image
+              src={getImageByLocale(locale)}
+              width={25}
+              height={25}
+              alt='pic'
+            />
+            <span className='ml-2'>{getTextByLocale(locale)}</span>
+          </div>
+        </MenuItem>
       ))}
-    </select>
+    </Select>
   );
+}
+
+function getImageByLocale(locale: string): any {
+  switch (locale) {
+    case 'uz':
+      return UzFlag;
+    case 'ru':
+      return RuFlag;
+    case 'en':
+      return EnFlag;
+    case 'cr':
+      return RuFlag;
+    default:
+      return null;
+  }
+}
+
+function getTextByLocale(locale: string): any {
+  switch (locale) {
+    case 'uz':
+      return "O'zbekcha";
+    case 'ru':
+      return 'Русский';
+    case 'en':
+      return 'English';
+    case 'cr':
+      return 'Кирил';
+    default:
+      return null;
+  }
 }

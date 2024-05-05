@@ -24,6 +24,7 @@ import { CategoryId, IProductBack } from '@/types/data';
 import Review from '@/components/Ui/Review/Review';
 import Contact from '@/components/Ui/Contact/Contact';
 import { getAllCategory } from '@/service/category';
+import useStoreCategory from '@/store/categoryStore';
 
 const data = [
   {
@@ -66,7 +67,7 @@ export default function Home({
   const [categories, setCategories] = useState([]);
   const { updateDictionary, updateHeader } = useSetStore();
   const [loading, setLoading] = useState(true);
-  const [categoryId, setCategoryId] = useState<string>('');
+  const { category, updateCategory, removeAllCategory } = useStoreCategory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,12 +82,12 @@ export default function Home({
 
   useEffect(() => {
     const fetchDataProduct = async () => {
-      const res = await getAllProduct({ params: { categoryId } });
+      const res = await getAllProduct({ params: { categoryId: category } });
       setProductData(res.data?.data);
     };
 
     fetchDataProduct();
-  }, [categoryId]);
+  }, [category]);
   useEffect(() => {
     const fetchDataCategory = async () => {
       const res = await getAllCategory();
@@ -144,16 +145,20 @@ export default function Home({
           <section className='container px-3 m-auto mt-[100px] ' id='Product'>
             <div className='flex gap-[31px] font-bold mb-[36px]'>
               <button
-                onClick={() => setCategoryId('')}
-                className='hover:text-mainColor text-textGrey'
+                onClick={() => removeAllCategory()}
+                className={`hover:text-mainColor ${
+                  category === '' ? 'text-mainColor' : 'text-textGrey'
+                } `}
               >
                 Hammasi
               </button>
               {categories?.map((el: CategoryId) => (
                 <button
                   key={el._id}
-                  onClick={() => setCategoryId(el?._id)}
-                  className='hover:text-mainColor text-textGrey'
+                  onClick={() => updateCategory(el?._id)}
+                  className={`hover:text-mainColor ${
+                    category === el?._id ? 'text-mainColor' : 'text-textGrey'
+                  }`}
                 >
                   {el?.name[lang]}
                 </button>

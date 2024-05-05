@@ -52,7 +52,7 @@ export default function Product({
       {!data ? (
         <Loading />
       ) : (
-        <div className='flex justify-evenly my-[100px] flex-wrap gap-5 items-center container mx-auto px-3'>
+        <div className='flex justify-evenly my-[20px] md:my-[100px] flex-wrap gap-5 items-center container mx-auto px-3'>
           <div className='max-w-[500px]'>
             <Splide options={optionsSlider}>
               {data?.images?.map((el: string, index: number) => (
@@ -72,7 +72,9 @@ export default function Product({
             </Splide>
           </div>
           <div className='max-w-[600px] flex flex-col gap-5 '>
-            <h1 className='text-[45px] font-bold'>{data?.name[lang]}</h1>
+            <h1 className='text-[22px] md:text-[45px] font-bold'>
+              {data?.name[lang]}
+            </h1>
             <span>⭐⭐⭐⭐⭐</span>
             <p className='max-w-[600px]'>{data?.description[lang]}</p>
             <p className='text-mainColor font-bold text-[30px]'>

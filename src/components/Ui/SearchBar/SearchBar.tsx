@@ -4,17 +4,14 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { CiSearch } from 'react-icons/ci';
 import { BiMenuAltLeft } from 'react-icons/bi';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { RiMenu2Fill } from 'react-icons/ri';
 import { getAllProduct } from '@/service/product';
-import { IProduct } from '@/types/langType';
-import { IProductBack } from '@/types/data';
-import Link from 'next/link';
+import { CategoryId, IProductBack } from '@/types/data';
 import { useSetStore } from '@/store/store';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { getAllCategory } from '@/service/category';
+import useStoreCategory from '@/store/categoryStore';
 
 interface SearchBarProps {
   isIcon: boolean;
@@ -31,32 +28,44 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
   const [value, setValue] = useState<FilmOptionType | null>(null);
   const [age, setAge] = useState('Select Category');
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState('');
+  const [categories, setCategories] = useState([]);
   const { header } = useSetStore();
   const router = useRouter();
+  const path = usePathname();
+  const { category, updateCategory, removeAllCategory } = useStoreCategory();
 
   React.useEffect(() => {
-    const fetcher = async () => {
-      // const res = await getAllProduct();
-      // const res = await getcat();
-      // setData(res.data?.data);
-    };
     fetcher();
+    fetchDataCategory();
   }, []);
+  const fetcher = async () => {
+    const res = await getAllProduct({});
+    setData(res.data?.data);
+  };
+  const fetchDataCategory = async () => {
+    const res = await getAllCategory();
+    setCategories(res.data?.data);
+  };
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value);
+    if (event.target.value !== 'Select Category') {
+      updateCategory(event.target.value);
+    } else {
+      removeAllCategory();
+    }
   };
-  // console.log(data);
   const top100Films: any = data?.map((el: IProductBack) => {
     return { title: el?.name?.en, id: el?._id };
   });
 
-  const handleOptionClick = (option: FilmOptionType) => {
-    router.push(`/product`);
-    console.log(555);
+  const handleRoutePage = (value: any) => {
+    if (value && !path.includes('product')) {
+      router.push(`${header}/product/${value?.id}`);
+    } else {
+      router.push(`${value?.id}`);
+    }
   };
-
   return (
     <div className='bg-white p-1 flex items-center rounded-[50px] '>
       <div className='flex items-center gap-2'>
@@ -85,9 +94,11 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
                 IconComponent={CustomSelectIcon}
               >
                 <MenuItem value='Select Category'>Select Category</MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {categories?.map((el: any) => (
+                  <MenuItem key={el._id} value={el._id}>
+                    {header && el?.name[header]}
+                  </MenuItem>
+                ))}
               </Select>
             </div>
           )}
@@ -95,6 +106,7 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
         <Autocomplete
           value={value}
           onChange={(event, newValue) => {
+            handleRoutePage(newValue);
             if (typeof newValue === 'string') {
               setValue({
                 title: newValue,
@@ -137,14 +149,7 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
             return option.title;
           }}
           renderOption={(props, option: FilmOptionType) => (
-            <li
-              key={option?.id}
-              onClick={() => handleOptionClick(option)}
-              className='w-full'
-              {...props}
-            >
-              {option.title}
-            </li>
+            <li {...props}>{option.title}</li>
           )}
           sx={{
             width: 300,
