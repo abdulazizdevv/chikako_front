@@ -12,6 +12,7 @@ import { useSetStore } from '@/store/store';
 import { usePathname, useRouter } from 'next/navigation';
 import { getAllCategory } from '@/service/category';
 import useStoreCategory from '@/store/categoryStore';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const filter = createFilterOptions<FilmOptionType>();
 const CustomSelectIcon = () => (

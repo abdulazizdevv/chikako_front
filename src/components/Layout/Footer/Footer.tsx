@@ -19,56 +19,12 @@ import yellowStar from '@/assets/images/yellowStar.png';
 import startGreen from '@/assets/images/startGreen.png';
 
 export const Footer = () => {
-  const services = [
-    {
-      id: 1,
-      txt: 'Service Offerings',
-    },
-    {
-      id: 2,
-      txt: 'How It Works',
-    },
-    {
-      id: 3,
-      txt: 'Service Areas',
-    },
-    {
-      id: 4,
-      txt: 'Service FAQs',
-    },
-    {
-      id: 5,
-      txt: 'Contact Information',
-    },
-  ];
-  const customers = [
-    {
-      id: 1,
-      txt: 'Contact Us',
-    },
-    {
-      id: 2,
-      txt: 'Store List',
-    },
-    {
-      id: 3,
-      txt: 'Opening Hours',
-    },
-    {
-      id: 4,
-      txt: 'Returns & Exchanges',
-    },
-    {
-      id: 5,
-      txt: 'Refund and Returns',
-    },
-  ];
   return (
     <>
       <footer className='bg-[#EEFBFA] relative' id='Contact'>
         <div className='container px-3 m-auto py-[100px] pb-[200px]'>
           <div className='flex flex-wrap gap-5 items-start justify-between'>
-            <div style={{ zIndex: 99 }}>
+            <div style={{ zIndex: 99 }} className='flex items-start'>
               <Image src={Logo} width={192} height={72} alt='logo' />
               <div className='flex flex-col gap-[10px] mt-[24px]'>
                 <div className='flex gap-[8px] items-center'>
@@ -112,36 +68,6 @@ export const Footer = () => {
                     +998 90 000 00 00
                   </Link>
                 </div>
-              </div>
-            </div>
-            <div style={{ zIndex: 99 }}>
-              <h4 className='font-semibold text-[20px]'>Services</h4>
-              <div className='w-[30px] h-[4px] bg-textOrange rounded-[30px] mt-[7px]' />
-              <div className='flex gap-[12px] flex-col mt-[19px]'>
-                {services.map((el) => (
-                  <Link
-                    href={'#'}
-                    key={el.id}
-                    className='text-textGrey font-[600] hover:text-textOrange cool-link'
-                  >
-                    {el.txt}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div style={{ zIndex: 99 }}>
-              <h4 className='font-semibold text-[20px]'>Customer Support</h4>
-              <div className='w-[30px] h-[4px] bg-textOrange rounded-[30px] mt-[7px]' />
-              <div className='flex gap-[12px] flex-col mt-[19px] '>
-                {customers.map((el) => (
-                  <Link
-                    href={'#'}
-                    key={el.id}
-                    className='text-textGrey font-[600] hover:text-textOrange  cool-link'
-                  >
-                    {el.txt}
-                  </Link>
-                ))}
               </div>
             </div>
             <div style={{ zIndex: 99 }}>

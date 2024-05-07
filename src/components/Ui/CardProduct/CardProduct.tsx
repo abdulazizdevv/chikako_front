@@ -38,40 +38,44 @@ export default function CardProduct({
         },
       }}
     >
-      <AspectRatio minHeight='120px' maxHeight='200px'>
-        <Image
-          src={`${baseURLImg}/${img}`}
-          width={282}
-          height={217}
-          alt='pic'
-          className='object-contain'
-        />
-      </AspectRatio>
-      <CardContent orientation='horizontal'>
-        <div>
-          <div className='h-[127px]'>
-            <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
-              {categoryName}
+      <Link href={`${header}/product/${id}`}>
+        <AspectRatio minHeight='120px' maxHeight='200px'>
+          <Image
+            src={`${baseURLImg}/${img}`}
+            width={282}
+            height={217}
+            alt='pic'
+            className='object-contain'
+          />
+        </AspectRatio>
+        <CardContent orientation='horizontal'>
+          <div>
+            <div className='h-[127px]'>
+              <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
+                {categoryName}
+              </p>
+              <Link
+                href={`${header}/product/${id}`}
+                className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
+              >
+                {title.length > 50 ? title?.substring(0, 57) + '...' : title}
+              </Link>
+            </div>
+            <div className='mt-[13px]'>
+              ⭐⭐⭐⭐⭐
+              <span className='font-bold text-textGrey text-[14px]'>
+                (5.00)
+              </span>
+            </div>
+            <p className='font-bold text-[24px] text-mainColor mt-[11px]'>
+              {price} so’m
             </p>
-            <Link
-              href={`${header}/product/${id}`}
-              className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
-            >
-              {title.length > 50 ? title?.substring(0, 57) + '...' : title}
-            </Link>
           </div>
-          <div className='mt-[13px]'>
-            ⭐⭐⭐⭐⭐
-            <span className='font-bold text-textGrey text-[14px]'>(5.00)</span>
-          </div>
-          <p className='font-bold text-[24px] text-mainColor mt-[11px]'>
-            {price} so’m
-          </p>
-        </div>
-      </CardContent>
+        </CardContent>
+      </Link>
       <button
         onClick={() => navigate.push(`${header}/product/${id}`)}
-        className='w-full rounded-md p-[5px] text-center font-semibold text-mainColor hover:bg-mainColor border border-[red] hover:text-white'
+        className='w-full rounded-md p-[5px] text-center font-semibold bg-mainColor text-white hover:bg-[red]'
       >
         Sotib olish
       </button>

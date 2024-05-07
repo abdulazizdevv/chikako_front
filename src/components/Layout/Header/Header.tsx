@@ -35,16 +35,6 @@ export function Header() {
                 </div>
                 <div className='flex items-center '>
                   <LocaleSwitcher />
-                  <Link
-                    href={'tel:+998 90 010 50 85'}
-                    className='flex items-center gap-2 text-[12px] border border-[#FFFFFF59] w-[200px] justify-center py-2 rounded-[50px] text-white'
-                  >
-                    <FiPhoneCall size={20} />
-                    <span className='font-sans font-bold'>
-                      24/7 support: <br />
-                      +998 90 010 50 85
-                    </span>
-                  </Link>
                 </div>
               </div>
               <div className='flex items-center justify-between lg:hidden'>

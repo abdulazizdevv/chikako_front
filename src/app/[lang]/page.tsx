@@ -75,6 +75,7 @@ export default function Home({
   const [loading, setLoading] = useState(true);
   const { category, updateCategory, removeAllCategory } = useStoreCategory();
   const isSmallScreen = useMediaQuery('(max-width:650px)'); // Define a media query for small screens
+  const { dictionary } = useSetStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -212,7 +213,10 @@ export default function Home({
             )}
           </section>
 
-          <section className='mt-[80px] bg-mainColor' id='Categories'>
+          <section
+            className='mt-[80px] bg-mainColor'
+            id={dictionary?.categories}
+          >
             <div className='container px-3 m-auto py-[85px]'>
               <div className='text-center text-[white] mb-[30px]'>
                 <h2 className='text-[36px] font-semibold'>

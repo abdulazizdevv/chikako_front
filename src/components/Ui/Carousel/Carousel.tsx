@@ -14,6 +14,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { getAllBanner } from '@/service/banner';
 import { baseURLImg } from '@/service';
 import { useSetStore } from '@/store/store';
+import Link from 'next/link';
 
 export default function Carousel() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -81,13 +82,15 @@ export default function Carousel() {
           {data?.map((el: any) => (
             <div key={el?._id} className='keen-slider__slide '>
               {el && el.image && header && (
-                <Image
-                  src={`${baseURLImg}/${el.image[header]}`}
-                  className='w-full lg:h-[600px] object-contain lg:object-fill'
-                  width={1386}
-                  height={600}
-                  alt='banner'
-                />
+                <Link href={el?.url}>
+                  <Image
+                    src={`${baseURLImg}/${el.image[header]}`}
+                    className='w-full lg:h-[600px] object-contain lg:object-fill'
+                    width={1386}
+                    height={600}
+                    alt='banner'
+                  />
+                </Link>
               )}
             </div>
           ))}

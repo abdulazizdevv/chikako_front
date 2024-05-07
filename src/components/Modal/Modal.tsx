@@ -22,7 +22,7 @@ const style = {
   p: 3,
 };
 interface IProps {
-  data: object;
+  data: any;
   open: boolean;
   setOpen: (value: boolean) => void;
 }
@@ -30,7 +30,7 @@ interface IinitalValues {
   fullname: string;
   phone: string;
   comment: string;
-  product: any[];
+  products: any[];
 }
 
 export default function ModalOrder({ data, open, setOpen }: IProps) {
@@ -39,13 +39,18 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
     fullname: '',
     phone: '',
     comment: '',
-    product: [],
+    products: [],
   };
 
   const onSubmit = (values: IinitalValues) => {
     const res = {
       ...values,
-      product: [data],
+      products: [
+        {
+          product: data?._id,
+          count: 1,
+        },
+      ],
     };
     postOrder(res)
       .then(() => {
@@ -54,7 +59,7 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
           fullname: '',
           phone: '',
           comment: '',
-          product: [],
+          products: [],
         });
         toast.success('Success', {
           position: 'top-center',
@@ -63,7 +68,6 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
         });
       })
       .catch((err) => {
@@ -132,14 +136,25 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
                 }
               />
             </div>
-            <Button
-              className='float-end mt-5'
-              variant='contained'
-              color='error'
-              type='submit'
-            >
-              Send
-            </Button>
+            <div className='flex justify-end gap-2'>
+              <Button
+                className=' mt-5 w-full md:w-auto'
+                variant='contained'
+                color='error'
+                type='submit'
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className='mt-5 w-full md:w-auto'
+                variant='contained'
+                color='primary'
+                type='submit'
+              >
+                Send
+              </Button>
+            </div>
           </form>
         </Box>
       </Modal>
