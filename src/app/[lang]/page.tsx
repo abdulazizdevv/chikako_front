@@ -29,6 +29,8 @@ import './styles.css';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 const data = [
   {
@@ -72,8 +74,7 @@ export default function Home({
   const { updateDictionary, updateHeader } = useSetStore();
   const [loading, setLoading] = useState(true);
   const { category, updateCategory, removeAllCategory } = useStoreCategory();
-  const isSmallScreen = useMediaQuery('(max-width:550px)'); // Define a media query for small screens
-  const [ref] = useKeenSlider<HTMLDivElement>();
+  const isSmallScreen = useMediaQuery('(max-width:650px)'); // Define a media query for small screens
 
   useEffect(() => {
     const fetchData = async () => {
@@ -170,20 +171,31 @@ export default function Home({
                 </button>
               ))}
             </div>
+
             {isSmallScreen ? (
-              <div ref={ref} className='keen-slider'>
+              <Splide
+                options={{
+                  autoplay: true,
+                  lazyLoad: 'sequential',
+                  perPage: 1,
+                  arrows: false,
+                  snap: false,
+                  pagination: false,
+                }}
+              >
                 {productData?.map((el: IProductBack) => (
-                  <div key={el._id} className='keen-slider__slide'>
+                  <SplideSlide key={el._id}>
                     <CardProduct
+                      key={el._id}
                       categoryName={el?.categoryId?.name[lang]}
                       price={el?.price}
                       title={el?.name[lang]}
                       img={el?.images[0]}
                       id={el?._id}
                     />
-                  </div>
+                  </SplideSlide>
                 ))}
-              </div>
+              </Splide>
             ) : (
               <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
                 {productData?.map((el: IProductBack) => (
