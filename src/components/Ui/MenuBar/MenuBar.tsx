@@ -76,7 +76,7 @@ export default function MenuBar() {
         </div>
       </div>
       <div className='border border-[#b5b3b3] rounded-lg '>
-        <SearchBar isIcon={false} />
+        <SearchBar isIcon={false} closeDrawer={toggleDrawer('top', false)} />
       </div>
       <List>
         {[

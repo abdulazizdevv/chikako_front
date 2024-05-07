@@ -13,10 +13,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { getAllCategory } from '@/service/category';
 import useStoreCategory from '@/store/categoryStore';
 
-interface SearchBarProps {
-  isIcon: boolean;
-}
-
 const filter = createFilterOptions<FilmOptionType>();
 const CustomSelectIcon = () => (
   <div className='me-3'>
@@ -24,7 +20,7 @@ const CustomSelectIcon = () => (
   </div>
 );
 
-export default function SearchBar({ isIcon }: SearchBarProps) {
+export default function SearchBar({ isIcon, closeDrawer }: any) {
   const [value, setValue] = useState<FilmOptionType | null>(null);
   const [age, setAge] = useState('Select Category');
   const [data, setData] = useState([]);
@@ -62,8 +58,10 @@ export default function SearchBar({ isIcon }: SearchBarProps) {
   const handleRoutePage = (value: any) => {
     if (value && !path.includes('product')) {
       router.push(`${header}/product/${value?.id}`);
+      closeDrawer('top', false);
     } else {
       router.push(`${value?.id}`);
+      closeDrawer('top', false);
     }
   };
   return (
