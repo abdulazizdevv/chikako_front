@@ -1,7 +1,11 @@
 import axios from 'axios';
-// const token = localStorage.getItem("token");
-// export const baseURL = `http://localhost:6690/api`;
-// export const baseURLImg = `http://localhost:6690/uploads`;
+
+// Check if localStorage is available (i.e., running in a browser)
+let token: string | null = null;
+if (typeof window !== 'undefined') {
+  token = localStorage.getItem('token');
+}
+
 export const baseURL = `https://single.uz/api`;
 export const baseURLImg = `https://single.uz/uploads`;
 
@@ -11,7 +15,6 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }

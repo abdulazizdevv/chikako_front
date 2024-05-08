@@ -10,8 +10,22 @@ import 'react-toastify/dist/ReactToastify.css';
 const inter = Baloo_2({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Chikako',
-  description: 'Chikako website',
+  title: {
+    default: 'Chikako',
+    template: '%s - Chikako',
+  },
+  description:
+    'Chikako Qo’qon erkin Iqtisodiy zonasi eng sifatli qulay narxlarda.',
+  keywords:
+    "chikako, Qo’qon erkin Iqtisodiy zonasi, qo'qon, pampers, o'yinchoq ",
+  robots: { index: false, follow: false },
+  // other: {
+  //   url: 'https://ajoyib-fastfood.uz/',
+  // },
+  viewport: { width: 'device-width', initialScale: 1 },
+  // verification: {
+  //   google: 'e5cQm-u-rE5za92aa-FEOS5GCBwDiP6SB0mOs474F30',
+  // },
 };
 
 export default function RootLayout({
