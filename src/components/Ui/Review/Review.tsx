@@ -51,7 +51,7 @@ export default function Review() {
         slides: { perView: 3, spacing: 30 },
       },
     },
-    slides: { perView: 1, origin: 'center' },
+    slides: { perView: 1, spacing: 30, origin: 'center' },
 
     // slideChanged(slider) {
     //   setCurrentSlide(slider.track.details.rel);
@@ -66,18 +66,6 @@ export default function Review() {
       <div className='navigation-wrapper'>
         <div ref={sliderRef} className='keen-slider'>
           <div className='keen-slider__slide '>
-            <SliderCard image={ProfileImg} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={ProfileImg} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={ProfileImg} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
-            <SliderCard image={ProfileImg} title='Games and puzzle 1' />
-          </div>
-          <div className='keen-slider__slide'>
             <SliderCard image={ProfileImg} title='Games and puzzle 1' />
           </div>
           <div className='keen-slider__slide'>

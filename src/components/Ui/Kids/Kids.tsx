@@ -6,7 +6,6 @@ import kidsParty from '@/assets/icons/kidsParty.svg';
 import kidsPlayer from '@/assets/icons/kidsPlayer.svg';
 import kidsClub from '@/assets/icons/kidsClub.svg';
 import gameRoom from '@/assets/icons/gameRoom.svg';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useKeenSlider } from 'keen-slider/react';
 
 export const Kids = () => {

@@ -31,31 +31,40 @@ const SliderCard = ({ image, title }: { image: any; title: any }) => {
 
 export default function CategoryCard() {
   const [loaded, setLoaded] = useState(false);
-  const [data, setData] = useState<CategoryId[]>();
+  const [data, setData] = useState<any[]>([]);
   const { header } = useSetStore();
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     breakpoints: {
-      '(max-width: 300px)': {
-        slides: { perView: 1, spacing: 20 },
-      },
       '(min-width: 400px)': {
         slides: { perView: 1, spacing: 20 },
       },
       '(min-width: 600px)': {
-        slides: { perView: 2, spacing: 20 },
+        slides: { perView: 1, spacing: 20, origin: 'center' },
       },
       '(min-width: 750px)': {
         slides: { perView: 2, spacing: 25, origin: 'auto' },
       },
       '(min-width: 980px)': {
-        slides: { perView: 3, spacing: 25, origin: 'auto' },
+        slides: {
+          perView: data?.length < 3 ? data?.length : 3,
+          spacing: 25,
+          origin: 'auto',
+        },
       },
       '(min-width: 1220px)': {
-        slides: { perView: 5, spacing: 25, origin: 'auto' },
+        slides: {
+          perView: data?.length < 5 ? data?.length : 5,
+          spacing: 25,
+          origin: 'auto',
+        },
       },
       '(min-width: 1400px)': {
-        slides: { perView: 6, spacing: 25, origin: 'auto' },
+        slides: {
+          perView: data?.length < 6 ? data?.length : 6,
+          spacing: 25,
+          origin: 'auto',
+        },
       },
     },
     slides: { perView: 1, origin: 'auto', spacing: 25 },

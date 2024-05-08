@@ -23,8 +23,8 @@ export const Footer = () => {
     <>
       <footer className='bg-[#EEFBFA] relative' id='Contact'>
         <div className='container px-3 m-auto py-[100px] pb-[200px]'>
-          <div className='flex flex-wrap gap-5 items-start justify-between'>
-            <div style={{ zIndex: 99 }} className='flex items-start'>
+          <div className='flex flex-wrap gap-5 items-start justify-around'>
+            <div style={{ zIndex: 99 }} className=''>
               <Image src={Logo} width={192} height={72} alt='logo' />
               <div className='flex flex-col gap-[10px] mt-[24px]'>
                 <div className='flex gap-[8px] items-center'>

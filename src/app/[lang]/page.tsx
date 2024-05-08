@@ -232,6 +232,13 @@ export default function Home({
           </section>
           <section className='py-[80px]'>
             <div className='container px-3 m-auto'>
+              <div className='text-center  mb-[30px]'>
+                <h2 className='text-[36px] font-semibold'>Clients` comment</h2>
+                <p className='text-center max-w-[400px] m-auto mt-[10px]'>
+                  Lorem ipsum dolor sit amet consectetur. Id fames there are
+                  many vulputate eget dolor.
+                </p>
+              </div>
               <Review />
             </div>
           </section>
