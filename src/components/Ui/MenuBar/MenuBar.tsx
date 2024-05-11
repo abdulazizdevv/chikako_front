@@ -81,11 +81,11 @@ export default function MenuBar() {
       <List>
         {[
           dictionary?.home,
-          dictionary?.about,
+          dictionary?.products,
           dictionary?.categories,
-          dictionary?.pages,
+          dictionary?.comments,
           dictionary?.contact,
-        ].map((text, index) => (
+        ].map((text) => (
           <ListItem key={text} onKeyDown={toggleDrawer('top', false)}>
             <Link
               onClick={toggleDrawer('top', false)}

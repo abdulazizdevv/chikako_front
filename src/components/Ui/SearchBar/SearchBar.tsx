@@ -22,14 +22,14 @@ const CustomSelectIcon = () => (
 );
 
 export default function SearchBar({ isIcon, closeDrawer }: any) {
-  const [value, setValue] = useState<FilmOptionType | null>(null);
-  const [age, setAge] = useState('Select Category');
-  const [data, setData] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const { header } = useSetStore();
+  const { header, dictionary } = useSetStore();
+  const { category, updateCategory, removeAllCategory } = useStoreCategory();
   const router = useRouter();
   const path = usePathname();
-  const { category, updateCategory, removeAllCategory } = useStoreCategory();
+
+  const [value, setValue] = useState<FilmOptionType | null>(null);
+  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   React.useEffect(() => {
     fetcher();
@@ -45,8 +45,7 @@ export default function SearchBar({ isIcon, closeDrawer }: any) {
   };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
-    if (event.target.value !== 'Select Category') {
+    if (event.target.value !== 'Select category') {
       updateCategory(event.target.value);
     } else {
       removeAllCategory();
@@ -86,13 +85,17 @@ export default function SearchBar({ isIcon, closeDrawer }: any) {
                 }}
                 variant='outlined'
                 size='small'
-                labelId='demo-select-small-label'
-                id='demo-select-small'
-                value={age === '' ? 'Select Category' : age}
+                // labelId='demo-select-small-label'
+                // id='demo-select-small'
+                defaultValue={'Select category'}
                 onChange={handleChange}
                 IconComponent={CustomSelectIcon}
               >
-                <MenuItem value='Select Category'>Select Category</MenuItem>
+                {dictionary?.categories && (
+                  <MenuItem value={'Select category'}>
+                    {dictionary?.categories}
+                  </MenuItem>
+                )}
                 {categories?.map((el: any) => (
                   <MenuItem key={el._id} value={el._id}>
                     {header && el?.name[header]}

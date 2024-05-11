@@ -54,12 +54,9 @@ export default function CardProduct({
               <p className='text-textGrey font-bold text-[14px] mt-[24px] mb-[13px]'>
                 {categoryName}
               </p>
-              <Link
-                href={`${header}/product/${id}`}
-                className='text-[#001430] font-bold text-[18px]  hover:text-mainColor'
-              >
+              <h5 className='text-[#001430] font-bold text-[18px] '>
                 {title.length > 50 ? title?.substring(0, 57) + '...' : title}
-              </Link>
+              </h5>
             </div>
             <div className='mt-[13px]'>
               ⭐⭐⭐⭐⭐

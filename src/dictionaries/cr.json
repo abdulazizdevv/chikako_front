@@ -1,11 +1,21 @@
 {
     "header": {
-        "home": "Уй",
-        "about": "Ҳақида",
-        "categories": "Тоифалар",
-        "pages": "Саҳифалар",
-        "contact": "Алоқа",
+        "all": "Барчаси",
+        "home": "Асосий саҳифа",
+        "products": "Маҳсулотлар",
+        "categories": "Категориялар",
+        "comments": "Шарҳлар",
+        "contact": "Контакт",
+        "comfort_price": "Қулай Нарх",
+        "delivery": "Етказиб Бериш",
+        "delivery_desc": " Ўзбекистон бўйлаб етказиб берамиз",
+        "comfort_price_desc": "Сифат Нархдан Баландроқ",
+        "call_center": "Алоқа Маркази",
+        "hot_discount":"Қайноқ Чегирмалар",
+        "call_center_desc": "24 соат мобайнида боғланишингиз мумкин",
+        "offers": "Энг Зўр Таклифлар",
         "contact_us":"Биз билан боғланиш",
-        "send_contact":"Хабар юбориш"
+        "send_contact":"Хабар юбориш",
+        "clients_comment":"Мижозларнинг шарҳлари"
       }
   }

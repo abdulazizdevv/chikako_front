@@ -13,7 +13,14 @@ import TextArea from '../TextArea/TextArea';
 import { postOrder } from '@/service/contact';
 import Alert from '@mui/material/Alert';
 import { ToastContainer, toast } from 'react-toastify';
+import ReactInputMask from 'react-input-mask';
+import InputMask from 'react-input-mask';
 import { useSetStore } from '@/store/store';
+import {
+  FilledInputProps,
+  OutlinedInputProps,
+  InputProps,
+} from '@mui/material';
 interface IValue {
   fullname: string;
   phone: string;
@@ -71,10 +78,7 @@ const Contact = () => {
       <div className='grid lg:grid-cols-3 grid-cols-1 w-full gap-5'>
         <Card className={'border-none bg-[#fff]  p-[15px] w-full md:p-[50px]'}>
           <h2 className='text-[32px] font-semibold'>{dictionary.contact_us}</h2>
-          <p className='text-textGrey'>
-            Lorem ipsum dolor sit amet consectetur. Fermentum facilisi id at
-            adipiscing ametb ibendum quis vitae blandit.
-          </p>
+
           <div className='flex flex-col gap-5'>
             <div className='flex flex-wrap items-center  p-[35px] gap-5 border-[#ddd] border-[1px] rounded-lg'>
               <div className='bg-[#FFEEF0] w-[72px] h-[72px] flex justify-center items-center p-3 rounded-full'>
@@ -131,17 +135,11 @@ const Contact = () => {
           <h2 className='text-[32px] font-semibold'>
             {dictionary.send_contact}
           </h2>
-          <p className='text-textGrey'>
-            Lorem ipsum dolor sit amet consectetur. Fermentum facilisi id at
-            adipiscing ametb ibendum quis vitae adipiscing ametb ibendum quis
-            vitae blandit. adipiscing ametb ibendum quis vitae adipiscing ametb
-            ibendum quis vitae blandit. ibendum quis vitae blandit.
-          </p>
           <form onSubmit={handleSubmit}>
             <div className='grid grid-cols-2 gap-4 mb-4'>
               <TextField
                 id='outlined-basic'
-                label='Your Name'
+                placeholder='Your Name'
                 variant='outlined'
                 type='text'
                 size='medium'
@@ -149,15 +147,14 @@ const Contact = () => {
                 value={values.fullname}
                 onChange={(e) => setFieldValue('fullname', e.target.value)}
               />
-              <TextField
-                id='outlined-basic'
-                label='Phone number'
-                variant='outlined'
-                type='tel'
-                color='error'
-                size='medium'
-                value={values.phone}
+              <InputMask
+                type={'tel'}
+                mask={'(99) 999-99-99'}
+                value={values?.phone}
                 onChange={(e) => setFieldValue('phone', e.target.value)}
+                disabled={false}
+                placeholder={'Phone'}
+                className='border border-[#bbb] rounded-[4px] px-2 outline-[#D32F2F]'
               />
             </div>
             <TextArea
@@ -167,13 +164,12 @@ const Contact = () => {
               onChange={(e: any) => setFieldValue('comment', e.target.value)}
             />
             <Button
-              // onClick={handleClick}
               variant='contained'
               color='error'
               type='submit'
               className='p-[20px] mt-[38px] rounded-full'
             >
-              Send message
+              {dictionary?.send_contact}
             </Button>
           </form>
         </Card>

@@ -1,12 +1,22 @@
 {
   "header": {
+    "all": "Все",
     "home": "Главная",
-    "about": "О нас",
+    "products": "Продукты",
     "categories": "Категории",
-    "pages": "Страницы",
-    "contact": "Контакты",
+    "comments": "Отзывы",
+    "contact": "Контакт",
+    "comfort_price": "Доступная Цена",
+    "delivery": "Доставка",
+    "comfort_price_desc": "Качество Выше Цены",
+    "delivery_desc": "Доставка по Узбекистану",
+    "hot_discount":"Горячие Скидки",
+    "call_center_desc": "Вы можете связаться в течение 24 часов",
+    "call_center": "Kолл-центр",
+    "offers": "Лучшие Предложения",
     "contact_us": "Свяжитесь с нами",
-    "send_contact": "Отправить сообщение"
+    "send_contact": "Отправить сообщение",
+    "clients_comment":"Комментарий клиентов"
   }
   
 }

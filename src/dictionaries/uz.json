@@ -1,11 +1,21 @@
 {
   "header": {
-      "home": "Boshi",
-      "about": "Haqimizda",
-      "categories": "Toifalar",
-      "pages": "Pages",
-      "contact": "Ma'lumotlar",
+      "all": "Barchasi",
+      "home": "Asosiy sahifa",
+      "products": "Mahsulotlar",
+      "categories": "Kategoriyalar",
+      "contact": "Kontakt",
+      "comments": "Sharhlar",
+      "offers": "Eng Zo'r Takliflar",
+      "comfort_price": "Qulay Narx",
+      "delivery": "Yetkazib Berish",
+      "delivery_desc": "O'zbekiston bo'ylab yetkazib beramiz",
+      "call_center": "Aloqa Markazi",
+      "call_center_desc": "24 soat mobaynida bog'lanishingiz mumkin",
+      "comfort_price_desc": "Sifat Narxdan Balandroq",
+      "hot_discount":"Qaynoq Chegirmalar",
       "contact_us":"Biz bilan bog'lanish",
-      "send_contact":"Xabar yuborish"
+      "send_contact":"Xabar yuborish",
+      "clients_comment":"Mijozlarning sharhlari"
     }
 }

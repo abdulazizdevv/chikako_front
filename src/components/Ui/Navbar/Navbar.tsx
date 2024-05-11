@@ -13,14 +13,14 @@ export const Navbar = () => {
         <div className='flex items-center gap-[32px] font-[500]'>
           {[
             dictionary?.home,
-            dictionary?.about,
+            dictionary?.products,
             dictionary?.categories,
-            dictionary?.pages,
+            dictionary?.comments,
             dictionary?.contact,
           ].map((el, idx) => (
             <Link
               key={idx}
-              href={`#${el}`}
+              href={el === dictionary?.home ? '/' : '#' + el}
               className='hover:text-mainColor font-[500] '
             >
               {el}
@@ -29,7 +29,7 @@ export const Navbar = () => {
         </div>
         <div className='flex items-center px-[14px] gap-2 font-[500] py-[8px] bg-[#FAE7EA] rounded-[50px]'>
           <Image src={Fire} width={25} height={25} alt='fire' />
-          <p className='text-textColor'>Super Deals Product</p>
+          <p className='text-textColor'>{dictionary?.offers}</p>
         </div>
       </div>
     </nav>

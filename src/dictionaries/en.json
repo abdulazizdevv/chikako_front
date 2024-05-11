@@ -1,10 +1,20 @@
 {
     "header": {
+      "all": "All",
       "home": "Home",
-      "about": "About",
+      "products": "Products",
       "categories": "Categories",
-      "pages": "Pages",
-      "contact": "Contacts",
+      "comments": "Comments",
+      "contact": "Contact",
+      "comfort_price": "Favorable Price",
+      "delivery": "Delivery",
+      "comfort_price_desc": "Quality is Higher Than Price",
+      "delivery_desc": "Delivery across Uzbekistan",
+      "hot_discount":"Hot Discounts",
+      "call_center": "Call Center",
+      "call_center_desc": "You can contact within 24hrs",
+      "clients_comment":"Clients` comment",
+      "offers": "Best Offers",
       "contact_us": "Contact us",
       "send_contact": "Send message"
     }

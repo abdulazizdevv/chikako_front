@@ -32,37 +32,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
-const data = [
-  {
-    id: 1,
-    img: Comfortable,
-    title: 'Qulay',
-    text: 'Back guarantee under 7 days.',
-    bgColor: '#FFF7ED',
-  },
-  {
-    id: 2,
-    img: Economic,
-    title: 'Tejamkor',
-    text: 'On every order over $2000.',
-    bgColor: '#E6EEF9',
-  },
-  {
-    id: 3,
-    img: Truck,
-    title: 'Quruq',
-    text: 'Free delivery to your home.',
-    bgColor: '#DFF8F6',
-  },
-  {
-    id: 4,
-    img: Soft,
-    title: 'Yumshoq',
-    text: 'Dedicated support in 24hrs',
-    bgColor: '#FFEEF0',
-  },
-];
-
 export default function Home({
   params: { lang },
 }: {
@@ -121,6 +90,37 @@ export default function Home({
     };
   }, []);
 
+  const data = [
+    {
+      id: 1,
+      img: Comfortable,
+      title: dictionary?.comfort_price,
+      text: dictionary?.comfort_price_desc,
+      bgColor: '#f7ebdc',
+    },
+    {
+      id: 2,
+      img: Economic,
+      title: dictionary?.hot_discount,
+      text: '',
+      bgColor: '#d5e0f0',
+    },
+    {
+      id: 3,
+      img: Truck,
+      title: dictionary?.delivery,
+      text: dictionary?.delivery_desc,
+      bgColor: '#cdf0ed',
+    },
+    {
+      id: 4,
+      img: Soft,
+      title: dictionary?.call_center,
+      text: dictionary?.call_center_desc,
+      bgColor: '#f5dcdf',
+    },
+  ];
+
   return (
     <>
       {loading ? (
@@ -150,7 +150,10 @@ export default function Home({
           <div className='absolute right-[40px]'>
             <Image src={Umbrella} width={60} height={60} alt='pic' />
           </div>
-          <section className='container px-3 m-auto mt-[100px] ' id='Product'>
+          <section
+            className='container px-3 m-auto mt-[100px] '
+            id={dictionary?.products}
+          >
             <div className='flex gap-[31px] font-bold mb-[36px]'>
               <button
                 onClick={() => removeAllCategory()}
@@ -158,7 +161,7 @@ export default function Home({
                   category === '' ? 'text-mainColor' : 'text-textGrey'
                 } `}
               >
-                Hammasi
+                {dictionary?.all}
               </button>
               {categories?.map((el: CategoryId) => (
                 <button
@@ -230,10 +233,12 @@ export default function Home({
               <CategoryCard />
             </div>
           </section>
-          <section className='py-[80px]'>
+          <section className='py-[80px]' id={dictionary?.comments}>
             <div className='container px-3 m-auto'>
               <div className='text-center  mb-[30px]'>
-                <h2 className='text-[36px] font-semibold'>Clients` comment</h2>
+                <h2 className='text-[36px] font-semibold'>
+                  {dictionary?.clients_comment}
+                </h2>
                 <p className='text-center max-w-[400px] m-auto mt-[10px]'>
                   Lorem ipsum dolor sit amet consectetur. Id fames there are
                   many vulputate eget dolor.
@@ -260,12 +265,15 @@ export default function Home({
           <section className='container px-3 m-auto my-[60px]'>
             <Kids />
           </section>
-          <section className='container px-3 m-auto my-[60px]'>
+          <section
+            className='container px-3 m-auto my-[60px]'
+            id={dictionary?.contact}
+          >
             <Contact />
           </section>
           <div>
             <iframe
-              src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d18295.172577267396!2d70.91890383995433!3d40.53202361102537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1712766730730!5m2!1sen!2s'
+              src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3035.153030377853!2d71.0207993!3d40.4718794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bafb8064549a0f%3A0x7e2a97e706b64de8!2sChikako!5e0!3m2!1sen!2s!4v1715405006702!5m2!1sen!2s'
               width='100%'
               height='450'
               loading='lazy'

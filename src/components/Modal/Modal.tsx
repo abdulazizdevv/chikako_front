@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import TextArea from '../Ui/TextArea/TextArea';
 import { postOrder } from '@/service/contact';
 import { ToastContainer, toast } from 'react-toastify';
+import ReactInputMask from 'react-input-mask';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -107,7 +108,8 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
             <div className='mt-5 flex flex-col gap-5'>
               <TextField
                 id='outlined-basic'
-                label='Name'
+                placeholder='Name'
+                color='error'
                 variant='outlined'
                 size='small'
                 fullWidth
@@ -117,15 +119,14 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
                   formik.setFieldValue('fullname', e.target.value)
                 }
               />
-              <TextField
-                id='outlined-basic'
-                label='Phone Number'
-                variant='outlined'
-                size='small'
-                type='tel'
-                fullWidth
-                value={formik.values.phone}
+              <ReactInputMask
+                type={'tel'}
+                mask={'(99) 999-99-99'}
+                value={formik?.values?.phone}
                 onChange={(e) => formik.setFieldValue('phone', e.target.value)}
+                disabled={false}
+                placeholder={'Phone'}
+                className='border border-[#bbb] rounded-[4px] p-2 outline-[#D32F2F]'
               />
               <TextArea
                 value={formik.values.comment}
@@ -137,15 +138,6 @@ export default function ModalOrder({ data, open, setOpen }: IProps) {
               />
             </div>
             <div className='flex justify-end gap-2'>
-              <Button
-                className=' mt-5 w-full md:w-auto'
-                variant='contained'
-                color='error'
-                type='submit'
-                onClick={() => setOpen(false)}
-              >
-                Cancel
-              </Button>
               <Button
                 className='mt-5 w-full md:w-auto'
                 variant='contained'
