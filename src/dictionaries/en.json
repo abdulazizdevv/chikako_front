@@ -16,7 +16,11 @@
       "clients_comment":"Clients` comment",
       "offers": "Best Offers",
       "contact_us": "Contact us",
-      "send_contact": "Send message"
+      "send_contact": "Send message",
+      "shop_by_age":"Shop by Age",
+      "shop_by_category":"Shop by category",
+      "review1":"Hello, there is no question about the quality of the products developed by your company. We have been using them for 6 months. They are worth the price. I will recommend them to others.",
+      "review2":"Thank you very much for providing really good and quality products to the people. It is very beneficial for the people. I myself have been using it for a long time."
     }
 }
   

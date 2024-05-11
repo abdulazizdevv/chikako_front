@@ -223,7 +223,7 @@ export default function Home({
             <div className='container px-3 m-auto py-[85px]'>
               <div className='text-center text-[white] mb-[30px]'>
                 <h2 className='text-[36px] font-semibold'>
-                  Shop by Categories
+                  {dictionary?.shop_by_category}
                 </h2>
                 <p className='text-center max-w-[400px] m-auto mt-[10px]'>
                   Lorem ipsum dolor sit amet consectetur. Id fames there are
@@ -250,7 +250,9 @@ export default function Home({
           <section>
             <div className='container px-3 m-auto py-[85px]'>
               <div className='text-center text-[#001430] mb-[30px]'>
-                <h2 className='text-[36px] font-semibold'>Shop by Age</h2>
+                <h2 className='text-[36px] font-semibold'>
+                  {dictionary?.shop_by_age}
+                </h2>
                 <p className='text-center max-w-[400px] text-textGrey m-auto mt-[10px]'>
                   Lorem ipsum dolor sit amet consectetur. Id fames there are
                   many vulputate eget dolor.

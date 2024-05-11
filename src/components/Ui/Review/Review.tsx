@@ -4,7 +4,11 @@ import './review.css';
 import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import ProfileImg from '@/assets/images/profile.png';
+import Women1 from '@/assets/images/women.jpg';
+import Women2 from '@/assets/images/women2.jpg';
+import Man from '@/assets/images/man.jpg';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
+import { useSetStore } from '@/store/store';
 
 const SliderCard = ({
   image,
@@ -17,13 +21,13 @@ const SliderCard = ({
 }) => {
   return (
     <div className=''>
-      <div className=' w-[70px] m-auto top-[-50px] mb-[-50px]  p-3 rounded-full hover:translate-y-[-10px] transition-transform duration-300 ease-in-out'>
+      <div className=' w-full flex justify-center items-center top-[-50px] mb-[-50px]  p-3 rounded-full hover:translate-y-[-10px] transition-transform duration-300 ease-in-out'>
         <Image
           src={image}
-          width={70}
-          height={70}
+          width={270}
+          height={270}
           alt='pic'
-          className='  border-[gray] border-[1px]  rounded-full '
+          className=' object-cover border-[gray] border-[1px] w-[70px] h-[70px]  rounded-full '
         />
       </div>
       <div className='bg-blue-100 bg-opacity-60 z-[-99999999] rounded-[20px] w-full px-[65px] py-[20px] flex flex-col cursor-pointer justify-center items-center'>
@@ -41,6 +45,7 @@ const SliderCard = ({
 
 export default function Review() {
   const [loaded, setLoaded] = useState(false);
+  const { dictionary } = useSetStore();
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     // rtl: false,
@@ -72,22 +77,22 @@ export default function Review() {
           <div className='keen-slider__slide '>
             <SliderCard
               title='Dildora Saidova'
-              image={ProfileImg}
-              description='Assalomu alaykum kompaniyangiz ishlab chiqayotgan mahsulotlar sifatiga gap yo‘q 6 oydan beri foydalanib kelamiz narxiga arziydi qolganlarga ham tavsiya qilib qolaman.'
+              image={Women1}
+              description={dictionary?.review1}
             />
           </div>
           <div className='keen-slider__slide'>
             <SliderCard
-              image={ProfileImg}
+              image={Man}
               title='Ravshan Nosirov'
-              description='Haqiqatdan ham juda yaxshi va sifatli mahsulotlarni xalqqa taqdim etagingiz uchun katta rahmat. Xalq uchun juda manfaatli bo‘lyapti. O`zim ham uzoq vaqtlardan beri foydalanib kelaman.'
+              description={dictionary?.review2}
             />
           </div>
           <div className='keen-slider__slide'>
             <SliderCard
-              image={ProfileImg}
-              title='Aziza Hakimova'
-              description='Haqiqatdan ham juda yaxshi va sifatli mahsulotlarni xalqqa taqdim etagingiz uchun katta rahmat. Xalq uchun juda manfaatli bo‘lyapti. O`zim ham uzoq vaqtlardan beri foydalanib kelaman.'
+              image={Women2}
+              title='Kamila Hakimova'
+              description={dictionary?.review2}
             />
           </div>
         </div>

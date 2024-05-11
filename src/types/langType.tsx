@@ -11,11 +11,15 @@ export type Translations = {
   comfort_price_desc: string;
   comfort_price: string;
   clients_comment: string;
+  shop_by_age: string;
+  shop_by_category: string;
   hot_discount: string;
   call_center: string;
   call_center_desc: string;
   contact_us: string;
   send_contact: string;
+  review1: string;
+  review2: string;
 };
 
 export interface IProduct {
