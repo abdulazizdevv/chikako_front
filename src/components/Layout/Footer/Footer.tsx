@@ -23,7 +23,7 @@ export const Footer = () => {
     <>
       <footer className='bg-[#EEFBFA] relative' id='Contact'>
         <div className='container px-3 m-auto py-[100px] pb-[200px]'>
-          <div className='flex flex-wrap gap-5 items-start justify-around'>
+          <div className='flex flex-wrap gap-10 md:gap-5 items-start justify-around'>
             <div style={{ zIndex: 99 }} className=''>
               <Image src={Logo} width={192} height={72} alt='logo' />
               <div className='flex flex-col gap-[10px] mt-[24px]'>
@@ -76,7 +76,7 @@ export const Footer = () => {
               <div className='flex gap-[12px] flex-col mt-[19px]'>
                 <Link
                   href={'#'}
-                  className='text-textGrey font-[600] hover:text-textOrange'
+                  className='text-textGrey max-w-[250px] font-[600] hover:text-textOrange'
                 >
                   Bizni ijtimoiy tarmoqlarda kuzatib boring.
                 </Link>
