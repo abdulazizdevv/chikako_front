@@ -136,7 +136,7 @@ const Contact = () => {
             {dictionary.send_contact}
           </h2>
           <form onSubmit={handleSubmit}>
-            <div className='grid grid-cols-2 gap-4 mb-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-4'>
               <TextField
                 id='outlined-basic'
                 placeholder='Your Name'
@@ -154,7 +154,7 @@ const Contact = () => {
                 onChange={(e) => setFieldValue('phone', e.target.value)}
                 disabled={false}
                 placeholder={'Phone'}
-                className='border border-[#bbb] rounded-[4px] px-2 outline-[#D32F2F]'
+                className='border border-[#bbb] rounded-[4px] px-3 p-[15.2px] outline-[#D32F2F]'
               />
             </div>
             <TextArea

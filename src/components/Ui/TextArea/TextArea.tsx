@@ -29,6 +29,7 @@ export default function TextArea({
         className='w-full outline-none'
         style={{ height: size * 24, background: 'transparent' }}
         type='text'
+        maxLength={255}
         {...rest}
       ></textarea>
     </div>
